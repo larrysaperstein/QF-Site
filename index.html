@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick &amp; Funny Musicals</title>
+  <meta name="description" content="Quick &amp; Funny Musicals — a musical comedy team known for irreverent parodies and bold, hilarious storytelling.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Rock+Salt&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- Full-page navigation menu -->
+  <aside class="nav-menu" id="nav-menu" aria-hidden="true">
+    <nav class="nav-menu__inner" aria-label="Main navigation">
+      <ul class="nav-menu__list">
+        <li><a href="index.html" class="nav-menu__link">Home</a></li>
+        <li><a href="company.html" class="nav-menu__link">Company</a></li>
+        <li><a href="#" class="nav-menu__link">Shows</a></li>
+        <li><a href="upcoming.html" class="nav-menu__link">Upcoming</a></li>
+        <li><a href="#" class="nav-menu__link">Press/Contact</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <header class="site-header" id="site-header">
+    <div class="site-header__inner">
+      <a href="index.html" class="site-header__logo" aria-label="Quick &amp; Funny Musicals — Home">
+        <img
+          src="images/QF Logo 3.png"
+          alt="Quick and Funny Musicals"
+          class="site-header__logo-image"
+          loading="eager"
+        >
+      </a>
+
+      <div class="site-header__actions">
+        <a
+          href="https://www.instagram.com/quickandfunnymusicals/"
+          class="site-header__social"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Follow us on Instagram"
+        >
+          <img src="images/icon-instagram.svg" alt="" class="icon-instagram" width="24" height="24">
+        </a>
+
+        <button
+          class="hamburger"
+          id="hamburger"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+        >
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero" id="hero" aria-label="Welcome">
+      <div class="hero__slideshow" aria-hidden="true">
+        <div class="hero__slide hero__slide--active" style="background-image: url('images/ensemble-happy.jpg');"></div>
+        <div class="hero__slide" style="background-image: url('images/hero-2.jpg');"></div>
+        <div class="hero__slide" style="background-image: url('images/hero-3.jpg');"></div>
+        <div class="hero__slide" style="background-image: url('images/hero-4.jpg');"></div>
+        <div class="hero__slide" style="background-image: url('images/hero-5.jpg');"></div>
+      </div>
+
+      <div class="hero__intro" id="hero-intro">
+        <div class="hero__lottie" id="hero-lottie" aria-hidden="true"></div>
+      </div>
+
+      <div class="hero__logo-wrap" id="hero-logo-wrap" aria-hidden="true">
+        <img
+          src="images/QF Logo 3.png"
+          alt="Quick and Funny Musicals"
+          class="hero__logo-image"
+          id="hero-logo"
+          loading="eager"
+        >
+      </div>
+    </section>
+
+    <!-- Upcoming Dates -->
+    <section class="dates" id="dates" aria-labelledby="dates-heading">
+      <h2 class="visually-hidden" id="dates-heading">Upcoming Dates</h2>
+      <div class="dates__inner">
+        <ul class="dates__list" id="dates-list" aria-live="polite">
+          <!-- Populated by JavaScript from Google Calendar API -->
+        </ul>
+        <a href="upcoming.html" class="btn btn--outline dates__more">View More Dates</a>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about" aria-labelledby="about-heading">
+      <div class="about__shape" aria-hidden="true"></div>
+      <div class="about__inner">
+        <div class="about__content">
+          <h2 class="visually-hidden" id="about-heading">About Quick &amp; Funny Musicals</h2>
+
+          <p class="about__text">
+            We are the
+            <span class="about__accent">musical comedy team</span>
+            known for creating ambitious, ridiculous original and parody musicals... and putting them on stage before anyone can talk us out of it.
+          </p>
+
+          <p class="about__text">
+            In 2026, we produced the fan-favorite
+            <span class="about__accent">Heated Rivalry: The Parody Musical,</span>
+            which celebrated 10 consecutive sold-out performances in Los Angeles and a massively successful Edinburgh Fringe Festival run.
+          </p>
+
+          <p class="about__text">
+            We
+            <span class="about__accent">write, perform, direct, and produce</span>
+            each show we devise, together as a team. Oh yeah, and we do it all every month. We’ve developed a slate of wildly unique, delightfully weird, and downright hilarious original musicals that we can’t wait for you to explore and see on stage.
+          </p>
+
+          <div class="about__buttons">
+            <a href="company.html" class="btn btn--red">Meet Us</a>
+            <a href="#" class="btn btn--red">Explore Shows</a>
+          </div>
+        </div>
+
+        <figure class="about__gallery" aria-label="Performance photos">
+          <img
+            src="images/kids-save-world.jpg"
+            alt="Cast members performing on stage"
+            class="about__photo about__photo--1"
+            loading="lazy"
+          >
+          <img
+            src="images/yes-chef.JPG"
+            alt="Performers in costume"
+            class="about__photo about__photo--2"
+            loading="lazy"
+          >
+          <img
+            src="images/other-cats.JPG"
+            alt="Ensemble on stage"
+            class="about__photo about__photo--3"
+            loading="lazy"
+          >
+        </figure>
+      </div>
+    </section>
+
+    <!-- Social Media -->
+    <section class="social" id="social" aria-labelledby="social-heading">
+      <h2 class="social__heading" id="social-heading">Social Media Moments</h2>
+      <div class="social__grid">
+        <article class="social__embed social__embed--placeholder" aria-label="YouTube Short placeholder 1">
+          <p class="social__placeholder-text">YouTube Short</p>
+        </article>
+        <article class="social__embed social__embed--placeholder" aria-label="YouTube Short placeholder 2">
+          <p class="social__placeholder-text">YouTube Short</p>
+        </article>
+        <article class="social__embed social__embed--placeholder" aria-label="YouTube Short placeholder 3">
+          <p class="social__placeholder-text">YouTube Short</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__tagline">
+        Are we your kind of people? Don&rsquo;t risk missing our next show!
+      </p>
+
+      <a href="#" class="btn btn--red site-footer__cta">Stay In The Know</a>
+
+      <a
+        href="https://www.instagram.com/quickandfunnymusicals/"
+        class="site-footer__social"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Follow us on Instagram"
+      >
+        <img src="images/icon-instagram.svg" alt="" class="icon-instagram icon-instagram--red" width="28" height="28">
+      </a>
+
+      <nav class="site-footer__nav" aria-label="Footer navigation">
+        <ul class="site-footer__nav-list">
+          <li><a href="index.html" class="site-footer__link">Home</a></li>
+          <li><a href="company.html" class="site-footer__link">Company</a></li>
+          <li><a href="#" class="site-footer__link">Shows</a></li>
+          <li><a href="upcoming.html" class="site-footer__link">Upcoming</a></li>
+          <li><a href="#" class="site-footer__link">Press/Contact</a></li>
+        </ul>
+      </nav>
+
+      <p class="site-footer__copyright">
+        &copy;2026 &ndash; Quick &amp; Funny Musicals. All Rights Reserved.
+      </p>
+
+      <p class="site-footer__credit">
+        Website by
+        <a href="https://sapersteindesign.com" class="site-footer__credit-link" target="_blank" rel="noopener noreferrer">Saperstein Creative</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/calendar.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
