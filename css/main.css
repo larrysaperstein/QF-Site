@@ -1402,14 +1402,17 @@ body.menu-open .site-header__logo {
 .show-gallery__item {
   border: 2px solid var(--color-black);
   background-color: var(--color-off-white);
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
   transition:
     transform var(--transition-fast),
     border-color var(--transition-fast);
 }
 
 .show-gallery__image {
+  display: block;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 100%;
   object-fit: cover;
 }
 
