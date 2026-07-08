@@ -18,11 +18,17 @@
     heroSettleDelay: 1000,
     slideshowInterval: 5000,
   };
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   let slideshowTimer = null;
   let currentSlide = 0;
 
   function initHero() {
+    if (prefersReducedMotion) {
+      showHeroFinalState();
+      return;
+    }
+
     if (typeof lottie === 'undefined') {
       console.warn('Lottie library not loaded — skipping hero animation.');
       showHeroFinalState();
@@ -55,12 +61,14 @@
     heroLogoWrap.classList.add('is-visible');
     heroLogoWrap.setAttribute('aria-hidden', 'false');
     heroSlideshow.classList.add('is-visible');
-    startSlideshow();
+    if (!prefersReducedMotion) {
+      startSlideshow();
+    }
   }
 
   function startSlideshow() {
     const slides = document.querySelectorAll('.hero__slide');
-    if (slides.length <= 1) return;
+    if (slides.length <= 1 || slideshowTimer) return;
 
     slideshowTimer = setInterval(function () {
       slides[currentSlide].classList.remove('hero__slide--active');
@@ -71,6 +79,13 @@
 
   function initAboutGallery() {
     if (!aboutPhotos.length || !aboutSection) return;
+
+    if (prefersReducedMotion) {
+      aboutPhotos.forEach(function (photo) {
+        photo.classList.add('is-visible');
+      });
+      return;
+    }
 
     const revealDelays = {
       'about__photo--2': 0,
@@ -116,5 +131,18 @@
     }
 
     initAboutGallery();
+
+    document.addEventListener('visibilitychange', function () {
+      if (!slideshowTimer) {
+        return;
+      }
+
+      if (document.hidden) {
+        clearInterval(slideshowTimer);
+        slideshowTimer = null;
+      } else {
+        startSlideshow();
+      }
+    });
   });
 })();

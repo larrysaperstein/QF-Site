@@ -5,11 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Upcoming Dates | Quick &amp; Funny Musicals</title>
   <meta name="description" content="All upcoming performance dates for Quick &amp; Funny Musicals.">
+  <link rel="canonical" href="https://quickandfunnymusicals.com/upcoming">
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <meta property="og:image" content="images/messageicon.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Upcoming Dates | Quick &amp; Funny Musicals">
+  <meta property="og:description" content="All upcoming performance dates for Quick &amp; Funny Musicals.">
+  <meta property="og:url" content="https://quickandfunnymusicals.com/upcoming">
+  <meta property="og:image" content="https://quickandfunnymusicals.com/images/messageicon.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="images/messageicon.jpg">
+  <meta name="twitter:title" content="Upcoming Dates | Quick &amp; Funny Musicals">
+  <meta name="twitter:description" content="All upcoming performance dates for Quick &amp; Funny Musicals.">
+  <meta name="twitter:image" content="https://quickandfunnymusicals.com/images/messageicon.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +25,7 @@
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body class="page-sub">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <aside class="nav-menu" id="nav-menu" aria-hidden="true">
     <nav class="nav-menu__inner" aria-label="Main navigation">
@@ -79,13 +87,14 @@
     </div>
   </header>
 
-  <main class="page-upcoming">
+  <main class="page-upcoming" id="main-content">
     <section class="dates dates--page" aria-labelledby="upcoming-heading">
       <div class="dates__inner">
         <h1 class="dates-page__heading" id="upcoming-heading">Upcoming Dates</h1>
         <ul class="dates__list" id="dates-list" aria-live="polite">
           <!-- Populated by JavaScript from Google Calendar API -->
         </ul>
+        <noscript><p class="visually-hidden">JavaScript is disabled. Upcoming dates cannot be loaded dynamically.</p></noscript>
       </div>
     </section>
   </main>
@@ -131,9 +140,9 @@
     </div>
   </footer>
 
-  <script src="js/config.js"></script>
-  <script src="js/calendar.js"></script>
-  <script src="js/nav.js"></script>
-  <script src="js/upcoming.js"></script>
+  <script defer src="js/config.js"></script>
+  <script defer src="js/calendar.js"></script>
+  <script defer src="js/nav.js"></script>
+  <script defer src="js/upcoming.js"></script>
 </body>
 </html>

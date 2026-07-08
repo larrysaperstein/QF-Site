@@ -3,6 +3,8 @@
  */
 var QFCalendar = (function () {
   'use strict';
+  var CACHE_KEY = 'qf-calendar-events-v1';
+  var CACHE_TTL_MS = 10 * 60 * 1000;
 
   function escapeHtml(str) {
     const div = document.createElement('div');
@@ -62,6 +64,9 @@ var QFCalendar = (function () {
       const ticketLinkAttrs = ticketUrl !== '#'
         ? ' target="_blank" rel="noopener noreferrer"'
         : '';
+      const ticketsMarkup = ticketUrl !== '#'
+        ? '<a href="' + escapeHtml(ticketUrl) + '" class="btn btn--outline dates__tickets"' + ticketLinkAttrs + '>Tickets</a>'
+        : '<span class="btn btn--outline dates__tickets" aria-disabled="true">Tickets</span>';
 
       li.innerHTML =
         '<div class="dates__main">' +
@@ -72,9 +77,56 @@ var QFCalendar = (function () {
           '<span class="dates__separator" aria-hidden="true"></span>' +
           '<span class="dates__title">' + escapeHtml(event.title) + '</span>' +
         '</div>' +
-        '<a href="' + escapeHtml(ticketUrl) + '" class="btn btn--outline dates__tickets"' + ticketLinkAttrs + '>Tickets</a>';
+        ticketsMarkup;
 
       listEl.appendChild(li);
+    });
+  }
+
+  function getCachedEvents() {
+    try {
+      var raw = sessionStorage.getItem(CACHE_KEY);
+      if (!raw) {
+        return null;
+      }
+
+      var parsed = JSON.parse(raw);
+      if (!parsed || !Array.isArray(parsed.events) || typeof parsed.timestamp !== 'number') {
+        return null;
+      }
+
+      if ((Date.now() - parsed.timestamp) > CACHE_TTL_MS) {
+        return null;
+      }
+
+      return parsed.events;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function setCachedEvents(events) {
+    try {
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify({
+        timestamp: Date.now(),
+        events: events,
+      }));
+    } catch (error) {
+      /* ignore cache write errors */
+    }
+  }
+
+  function fetchEventsWithRetry(calendarApiUrl, attemptsRemaining) {
+    return fetchEvents(calendarApiUrl).catch(function (error) {
+      if (attemptsRemaining <= 1) {
+        throw error;
+      }
+
+      return new Promise(function (resolve) {
+        setTimeout(resolve, 600);
+      }).then(function () {
+        return fetchEventsWithRetry(calendarApiUrl, attemptsRemaining - 1);
+      });
     });
   }
 
@@ -87,8 +139,17 @@ var QFCalendar = (function () {
       return Promise.resolve();
     }
 
-    return fetchEvents(calendarApiUrl)
+    var cachedEvents = getCachedEvents();
+    if (cachedEvents) {
+      var cachedLimited = typeof maxEvents === 'number'
+        ? cachedEvents.slice(0, maxEvents)
+        : cachedEvents;
+      renderEvents(listEl, cachedLimited);
+    }
+
+    return fetchEventsWithRetry(calendarApiUrl, 3)
       .then(function (events) {
+        setCachedEvents(events);
         const limited = typeof maxEvents === 'number'
           ? events.slice(0, maxEvents)
           : events;
@@ -97,8 +158,10 @@ var QFCalendar = (function () {
       })
       .catch(function (err) {
         console.error('Failed to load calendar events:', err);
-        listEl.innerHTML =
-          '<li class="dates__empty">Unable to load upcoming dates right now. Please check back soon.</li>';
+        if (!cachedEvents) {
+          listEl.innerHTML =
+            '<li class="dates__empty">Unable to load upcoming dates right now. Please check back soon.</li>';
+        }
       });
   }
 

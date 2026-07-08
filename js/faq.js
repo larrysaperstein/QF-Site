@@ -13,6 +13,7 @@
     var trigger = document.createElement('button');
     trigger.className = 'faq-item__trigger';
     trigger.type = 'button';
+    trigger.id = 'faq-question-' + index;
     trigger.setAttribute('aria-expanded', 'false');
     trigger.setAttribute('aria-controls', answerId);
 
@@ -31,6 +32,9 @@
     var answerWrap = document.createElement('div');
     answerWrap.className = 'faq-item__answer-wrap';
     answerWrap.id = answerId;
+    answerWrap.setAttribute('role', 'region');
+    answerWrap.setAttribute('aria-labelledby', trigger.id);
+    answerWrap.setAttribute('aria-hidden', 'true');
 
     var answer = document.createElement('div');
     answer.className = 'faq-item__answer';
@@ -46,6 +50,7 @@
     trigger.addEventListener('click', function () {
       var isOpen = wrapper.classList.toggle('is-open');
       trigger.setAttribute('aria-expanded', String(isOpen));
+      answerWrap.setAttribute('aria-hidden', String(!isOpen));
     });
 
     return wrapper;

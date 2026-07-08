@@ -13,27 +13,27 @@
     '<aside class="nav-menu" id="nav-menu" aria-hidden="true">' +
       '<nav class="nav-menu__inner" aria-label="Main navigation">' +
         '<ul class="nav-menu__list">' +
-          '<li><a href="index.html" class="nav-menu__link">Home</a></li>' +
+          '<li><a href="/" class="nav-menu__link">Home</a></li>' +
           '<li class="nav-menu__item nav-menu__item--has-children">' +
             '<button class="nav-menu__toggle" type="button" aria-expanded="false" data-nav-submenu-toggle>' +
               'About Us' +
               '<span class="nav-menu__caret" aria-hidden="true"></span>' +
             '</button>' +
             '<ul class="nav-menu__sublist">' +
-              '<li><a href="meet-us.html" class="nav-menu__link nav-menu__link--sub">Meet Us</a></li>' +
-              '<li><a href="faq.html" class="nav-menu__link nav-menu__link--sub">FAQ</a></li>' +
+              '<li><a href="/meet-us" class="nav-menu__link nav-menu__link--sub">Meet Us</a></li>' +
+              '<li><a href="/faq" class="nav-menu__link nav-menu__link--sub">FAQ</a></li>' +
             '</ul>' +
           '</li>' +
-          '<li><a href="company.html" class="nav-menu__link">Company</a></li>' +
-          '<li><a href="shows.html" class="nav-menu__link">Shows</a></li>' +
-          '<li><a href="upcoming.html" class="nav-menu__link">Upcoming</a></li>' +
-          '<li><a href="contact.html" class="nav-menu__link">Contact</a></li>' +
+          '<li><a href="/company" class="nav-menu__link">Company</a></li>' +
+          '<li><a href="/shows" class="nav-menu__link">Shows</a></li>' +
+          '<li><a href="/upcoming" class="nav-menu__link">Upcoming</a></li>' +
+          '<li><a href="/contact" class="nav-menu__link">Contact</a></li>' +
         '</ul>' +
       '</nav>' +
     '</aside>' +
     '<header class="site-header site-header--scrolled" id="site-header">' +
       '<div class="site-header__inner">' +
-        '<a href="index.html" class="site-header__logo" aria-label="Quick &amp; Funny Musicals — Home">' +
+        '<a href="/" class="site-header__logo" aria-label="Quick &amp; Funny Musicals — Home">' +
           '<img src="images/QF Logo 3.png" alt="Quick and Funny Musicals" class="site-header__logo-image" loading="eager">' +
         '</a>' +
         '<div class="site-header__actions">' +
@@ -48,29 +48,29 @@
         '</div>' +
       '</div>' +
     '</header>' +
-    '<main class="show-detail-page">' +
+    '<main class="show-detail-page" id="main-content">' +
       '<section class="show-detail-intro" aria-labelledby="show-logo-heading">' +
         '<h1 class="visually-hidden" id="show-logo-heading">Show details</h1>' +
-        '<img src="" alt="" id="show-logo" class="show-detail__logo" loading="eager">' +
+        '<img alt="" id="show-logo" class="show-detail__logo" loading="eager">' +
         '<div class="show-description" id="show-description"></div>' +
       '</section>' +
       '<section class="show-gallery" aria-labelledby="show-gallery-heading">' +
         '<div class="show-gallery__shape" aria-hidden="true"></div>' +
         '<div class="show-gallery__inner">' +
           '<h2 class="show-gallery__heading" id="show-gallery-heading">Production Gallery</h2>' +
-          '<p class="show-gallery__empty" id="show-gallery-empty" hidden>Gallery images coming soon.</p>' +
           '<div class="show-gallery__grid" id="show-gallery-grid"></div>' +
-          '<a href="shows.html" class="btn btn--outline show-gallery__return">Return To All Shows</a>' +
+          '<a href="/shows" class="btn btn--outline show-gallery__return">Return To All Shows</a>' +
         '</div>' +
       '</section>' +
     '</main>' +
     '<div class="show-lightbox" id="show-lightbox" aria-hidden="true">' +
       '<button class="show-lightbox__backdrop" type="button" data-lightbox-close aria-label="Close gallery"></button>' +
-      '<article class="show-lightbox__dialog" id="show-lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="show-lightbox-caption" tabindex="-1">' +
+      '<article class="show-lightbox__dialog" id="show-lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="show-lightbox-title" aria-describedby="show-lightbox-caption" tabindex="-1">' +
+        '<h2 class="visually-hidden" id="show-lightbox-title">Show image gallery</h2>' +
         '<button class="show-lightbox__close" type="button" data-lightbox-close aria-label="Close gallery"><span aria-hidden="true">&times;</span></button>' +
         '<div class="show-lightbox__media">' +
-          '<img src="" alt="" id="show-lightbox-image" class="show-lightbox__image">' +
-          '<p class="show-lightbox__caption" id="show-lightbox-caption"></p>' +
+          '<img alt="" id="show-lightbox-image" class="show-lightbox__image">' +
+          '<p class="show-lightbox__caption" id="show-lightbox-caption" aria-live="polite"></p>' +
         '</div>' +
         '<div class="show-lightbox__controls">' +
           '<button class="show-lightbox__nav show-lightbox__nav--prev" id="show-lightbox-prev" type="button" aria-label="Previous image">&#8249;</button>' +
@@ -87,13 +87,13 @@
         '</a>' +
         '<nav class="site-footer__nav" aria-label="Footer navigation">' +
           '<ul class="site-footer__nav-list">' +
-            '<li><a href="index.html" class="site-footer__link">Home</a></li>' +
-            '<li><a href="meet-us.html" class="site-footer__link">Meet Us</a></li>' +
-            '<li><a href="faq.html" class="site-footer__link">FAQ</a></li>' +
-            '<li><a href="company.html" class="site-footer__link">Company</a></li>' +
-            '<li><a href="shows.html" class="site-footer__link">Shows</a></li>' +
-            '<li><a href="upcoming.html" class="site-footer__link">Upcoming</a></li>' +
-            '<li><a href="contact.html" class="site-footer__link">Contact</a></li>' +
+            '<li><a href="/" class="site-footer__link">Home</a></li>' +
+            '<li><a href="/meet-us" class="site-footer__link">Meet Us</a></li>' +
+            '<li><a href="/faq" class="site-footer__link">FAQ</a></li>' +
+            '<li><a href="/company" class="site-footer__link">Company</a></li>' +
+            '<li><a href="/shows" class="site-footer__link">Shows</a></li>' +
+            '<li><a href="/upcoming" class="site-footer__link">Upcoming</a></li>' +
+            '<li><a href="/contact" class="site-footer__link">Contact</a></li>' +
           '</ul>' +
         '</nav>' +
         '<p class="site-footer__copyright">&copy;2026 &ndash; Quick &amp; Funny Musicals. All Rights Reserved.</p>' +

@@ -5,11 +5,82 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FAQ | Quick &amp; Funny Musicals</title>
   <meta name="description" content="Frequently asked questions about Quick &amp; Funny Musicals shows, accessibility, auditions, and partnerships.">
+  <link rel="canonical" href="https://quickandfunnymusicals.com/faq">
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <meta property="og:image" content="images/messageicon.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="FAQ | Quick &amp; Funny Musicals">
+  <meta property="og:description" content="Frequently asked questions about Quick &amp; Funny Musicals shows, accessibility, auditions, and partnerships.">
+  <meta property="og:url" content="https://quickandfunnymusicals.com/faq">
+  <meta property="og:image" content="https://quickandfunnymusicals.com/images/messageicon.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="images/messageicon.jpg">
+  <meta name="twitter:title" content="FAQ | Quick &amp; Funny Musicals">
+  <meta name="twitter:description" content="Frequently asked questions about Quick &amp; Funny Musicals shows, accessibility, auditions, and partnerships.">
+  <meta name="twitter:image" content="https://quickandfunnymusicals.com/images/messageicon.jpg">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When is Q&F’s Next Show?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We always have another show coming up somewhere or another. Please check out our upcoming dates page for more info on our next show."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are Q&F shows accessible?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "While most of our partner venues are accessible to patrons with disabilities, we cannot always guarantee accessibility. Make sure to view venue accessibility information before purchasing your ticket, and feel free to send us an email if you have a specific question."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I audition to be part of Q&F?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We are not currently auditioning new members at this time, but we do periodically hold auditions for writers and performers. If you’d like to be considered in our next round of casting, please join our mailing list for updates, as we’ll be sure to send an email blast when we are looking for new members."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can my theater partner with Q&F?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We’d love to come present one of our shows at your theater. Please reach out via our contact page, and one of our Company Managers will get back to you promptly to begin the conversation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Q&F tour?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We’ve been lucky enough to present our musicals at multiple venues across Los Angeles, and are heading to the Edinburgh Fringe Festival for the first time as a company. We can’t wait to explore bringing our shows to more audiences worldwide."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I interview someone for my article?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We’d be happy to coordinate an interview. Please email quickandfunnymusicals@gmail.com and let us know a little more about your story, your questions, your deadline, and how we can help."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use a photo from your site for my story, project, or blog?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Probably. Please email us, so we can approve on a case-by-case basis and ensure the appropriate credit for any content used elsewhere."
+          }
+        }
+      ]
+    }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +88,7 @@
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body class="page-sub">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <aside class="nav-menu" id="nav-menu" aria-hidden="true">
     <nav class="nav-menu__inner" aria-label="Main navigation">
       <ul class="nav-menu__list">
@@ -70,13 +142,14 @@
     </div>
   </header>
 
-  <main class="content-page">
+  <main class="content-page" id="main-content">
     <section class="content-hero" aria-labelledby="faq-heading">
       <h1 class="content-hero__heading" id="faq-heading">FAQ</h1>
     </section>
 
     <section class="content-section faq" aria-label="Frequently asked questions">
       <div class="faq-list" id="faq-list" aria-live="polite"></div>
+      <noscript><p class="visually-hidden">JavaScript is disabled. FAQ accordion content is unavailable.</p></noscript>
     </section>
   </main>
 
@@ -112,8 +185,8 @@
     </div>
   </footer>
 
-  <script src="js/faq-data.js"></script>
-  <script src="js/nav.js"></script>
-  <script src="js/faq.js"></script>
+  <script defer src="js/faq-data.js"></script>
+  <script defer src="js/nav.js"></script>
+  <script defer src="js/faq.js"></script>
 </body>
 </html>

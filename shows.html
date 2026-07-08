@@ -5,11 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Shows | Quick &amp; Funny Musicals</title>
   <meta name="description" content="Explore all Quick &amp; Funny Musicals productions.">
+  <link rel="canonical" href="https://quickandfunnymusicals.com/shows">
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <meta property="og:image" content="images/messageicon.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Our Shows | Quick &amp; Funny Musicals">
+  <meta property="og:description" content="Explore all Quick &amp; Funny Musicals productions.">
+  <meta property="og:url" content="https://quickandfunnymusicals.com/shows">
+  <meta property="og:image" content="https://quickandfunnymusicals.com/images/messageicon.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="images/messageicon.jpg">
+  <meta name="twitter:title" content="Our Shows | Quick &amp; Funny Musicals">
+  <meta name="twitter:description" content="Explore all Quick &amp; Funny Musicals productions.">
+  <meta name="twitter:image" content="https://quickandfunnymusicals.com/images/messageicon.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +24,7 @@
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body class="page-sub page-shows">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <aside class="nav-menu" id="nav-menu" aria-hidden="true">
     <nav class="nav-menu__inner" aria-label="Main navigation">
       <ul class="nav-menu__list">
@@ -70,10 +78,11 @@
     </div>
   </header>
 
-  <main class="shows-page">
+  <main class="shows-page" id="main-content">
     <section class="shows-listing" aria-labelledby="shows-heading">
       <h1 class="shows-listing__heading" id="shows-heading">Our Shows</h1>
       <div class="shows-listing__grid" id="shows-grid" aria-live="polite"></div>
+      <noscript><p class="visually-hidden">JavaScript is disabled. The dynamic show listing is unavailable.</p></noscript>
     </section>
   </main>
 
@@ -113,8 +122,8 @@
     </div>
   </footer>
 
-  <script src="js/shows-data.js"></script>
-  <script src="js/nav.js"></script>
-  <script src="js/shows-index.js"></script>
+  <script defer src="js/shows-data.js"></script>
+  <script defer src="js/nav.js"></script>
+  <script defer src="js/shows-index.js"></script>
 </body>
 </html>

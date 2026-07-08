@@ -11,16 +11,27 @@
   var lightboxDialog = document.getElementById('show-lightbox-dialog');
   var lightboxImage = document.getElementById('show-lightbox-image');
   var lightboxCaption = document.getElementById('show-lightbox-caption');
+  var lightboxTitle = document.getElementById('show-lightbox-title');
   var touchStartX = null;
   var touchStartY = null;
+  var lastFocusedLightboxTrigger = null;
 
   function renderHeader(show) {
     document.title = show.title + ' | Quick & Funny Musicals';
 
     var logo = document.getElementById('show-logo');
+    var heading = document.getElementById('show-logo-heading');
     if (logo) {
       logo.src = show.logo;
       logo.alt = show.title + ' logo';
+    }
+
+    if (heading) {
+      heading.textContent = show.title;
+    }
+
+    if (lightboxTitle) {
+      lightboxTitle.textContent = show.title + ' image gallery';
     }
   }
 
@@ -63,19 +74,16 @@
 
   function renderGallery(show) {
     var galleryGrid = document.getElementById('show-gallery-grid');
-    var emptyMessage = document.getElementById('show-gallery-empty');
-    if (!galleryGrid || !emptyMessage) {
+    if (!galleryGrid) {
       return;
     }
 
     galleryGrid.textContent = '';
 
     if (!show.galleryImages.length) {
-      emptyMessage.hidden = false;
       return;
     }
 
-    emptyMessage.hidden = true;
     var fragment = document.createDocumentFragment();
     show.galleryImages.forEach(function (src, index) {
       fragment.appendChild(buildGalleryItem(src, index, show.title));
@@ -101,10 +109,12 @@
       return;
     }
 
+    lastFocusedLightboxTrigger = document.activeElement;
     updateLightboxImage(index);
     lightbox.classList.add('is-open');
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
+    setLightboxInertState(true);
     lightboxDialog.focus();
   }
 
@@ -116,6 +126,12 @@
     lightbox.classList.remove('is-open');
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
+    setLightboxInertState(false);
+
+    if (lastFocusedLightboxTrigger && typeof lastFocusedLightboxTrigger.focus === 'function') {
+      lastFocusedLightboxTrigger.focus();
+      lastFocusedLightboxTrigger = null;
+    }
   }
 
   function initLightboxSwipe() {
@@ -198,10 +214,55 @@
         updateLightboxImage(lightboxImageIndex - 1);
       } else if (event.key === 'ArrowRight') {
         updateLightboxImage(lightboxImageIndex + 1);
+      } else if (event.key === 'Tab') {
+        trapLightboxFocus(event);
       }
     });
 
     initLightboxSwipe();
+  }
+
+  function setLightboxInertState(isInert) {
+    Array.prototype.forEach.call(document.body.children, function (el) {
+      if (el === lightbox) {
+        return;
+      }
+
+      if (isInert) {
+        el.setAttribute('inert', '');
+      } else {
+        el.removeAttribute('inert');
+      }
+    });
+  }
+
+  function trapLightboxFocus(event) {
+    var focusables = Array.prototype.slice.call(
+      lightboxDialog.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')
+    ).filter(function (el) {
+      return el.offsetParent !== null;
+    });
+
+    if (!focusables.length) {
+      event.preventDefault();
+      lightboxDialog.focus();
+      return;
+    }
+
+    var first = focusables[0];
+    var last = focusables[focusables.length - 1];
+    var active = document.activeElement;
+
+    if (event.shiftKey && active === first) {
+      event.preventDefault();
+      last.focus();
+      return;
+    }
+
+    if (!event.shiftKey && active === last) {
+      event.preventDefault();
+      first.focus();
+    }
   }
 
   function initShowPage() {

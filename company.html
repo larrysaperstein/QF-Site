@@ -5,11 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Company | Quick &amp; Funny Musicals</title>
   <meta name="description" content="Meet the Quick &amp; Funny Musicals company and alumni.">
+  <link rel="canonical" href="https://quickandfunnymusicals.com/company">
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <meta property="og:image" content="images/messageicon.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Company | Quick &amp; Funny Musicals">
+  <meta property="og:description" content="Meet the Quick &amp; Funny Musicals company and alumni.">
+  <meta property="og:url" content="https://quickandfunnymusicals.com/company">
+  <meta property="og:image" content="https://quickandfunnymusicals.com/images/messageicon.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="images/messageicon.jpg">
+  <meta name="twitter:title" content="Company | Quick &amp; Funny Musicals">
+  <meta name="twitter:description" content="Meet the Quick &amp; Funny Musicals company and alumni.">
+  <meta name="twitter:image" content="https://quickandfunnymusicals.com/images/messageicon.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +25,7 @@
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body class="page-sub page-company">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <aside class="nav-menu" id="nav-menu" aria-hidden="true">
     <nav class="nav-menu__inner" aria-label="Main navigation">
@@ -79,7 +87,7 @@
     </div>
   </header>
 
-  <main class="company-page">
+  <main class="company-page" id="main-content">
     <section class="company-hero" id="company" aria-labelledby="company-heading">
       <h1 class="company-hero__heading" id="company-heading">Company</h1>
       <a href="#alumni" class="btn btn--outline company-jump-link">View Alumni</a>
@@ -88,12 +96,14 @@
     <section class="company-section" aria-labelledby="company-current-heading">
       <h2 class="visually-hidden" id="company-current-heading">Current Company</h2>
       <div class="company-grid" id="company-grid" aria-live="polite"></div>
+      <noscript><p class="visually-hidden">JavaScript is disabled. Dynamic company profile content is unavailable.</p></noscript>
     </section>
 
     <section class="company-section company-section--alumni" id="alumni" aria-labelledby="company-alumni-heading">
       <h2 class="company-section__heading" id="company-alumni-heading">Alumni</h2>
       <a href="#company" class="btn btn--outline company-jump-link company-jump-link--section">View Company</a>
       <div class="company-grid" id="alumni-grid" aria-live="polite"></div>
+      <noscript><p class="visually-hidden">JavaScript is disabled. Dynamic alumni profile content is unavailable.</p></noscript>
     </section>
   </main>
 
@@ -105,7 +115,7 @@
       </button>
       <div class="company-modal__body">
         <div class="company-modal__media">
-          <img src="" alt="" class="company-modal__image" id="company-modal-image">
+          <img alt="" class="company-modal__image" id="company-modal-image">
         </div>
         <div class="company-modal__content">
           <p class="company-modal__eyebrow" id="company-modal-role"></p>
@@ -157,8 +167,8 @@
     </div>
   </footer>
 
-  <script src="js/company-data.js"></script>
-  <script src="js/nav.js"></script>
-  <script src="js/company.js"></script>
+  <script defer src="js/company-data.js"></script>
+  <script defer src="js/nav.js"></script>
+  <script defer src="js/company.js"></script>
 </body>
 </html>

@@ -5,11 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact | Quick &amp; Funny Musicals</title>
   <meta name="description" content="Contact Quick &amp; Funny Musicals and join the mailing list for show updates.">
+  <link rel="canonical" href="https://quickandfunnymusicals.com/contact">
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <meta property="og:image" content="images/messageicon.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact | Quick &amp; Funny Musicals">
+  <meta property="og:description" content="Contact Quick &amp; Funny Musicals and join the mailing list for show updates.">
+  <meta property="og:url" content="https://quickandfunnymusicals.com/contact">
+  <meta property="og:image" content="https://quickandfunnymusicals.com/images/messageicon.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="images/messageicon.jpg">
+  <meta name="twitter:title" content="Contact | Quick &amp; Funny Musicals">
+  <meta name="twitter:description" content="Contact Quick &amp; Funny Musicals and join the mailing list for show updates.">
+  <meta name="twitter:image" content="https://quickandfunnymusicals.com/images/messageicon.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +24,7 @@
   <link rel="stylesheet" href="css/main.css">
 </head>
 <body class="page-sub">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <aside class="nav-menu" id="nav-menu" aria-hidden="true">
     <nav class="nav-menu__inner" aria-label="Main navigation">
       <ul class="nav-menu__list">
@@ -70,7 +78,7 @@
     </div>
   </header>
 
-  <main class="content-page">
+  <main class="content-page" id="main-content">
     <section class="content-hero" aria-labelledby="contact-heading">
       <h1 class="content-hero__heading" id="contact-heading">Contact</h1>
     </section>
@@ -88,7 +96,7 @@
 
       <article class="contact-block" aria-labelledby="mailing-list-heading">
         <h2 class="contact-block__heading" id="mailing-list-heading">Join Our Mailing List</h2>
-        <p class="contact-block__text">Get first access to new show announcements, ticket drops, and more fun Q&F news by joining our mailing list!</p>
+        <p class="contact-block__text">Get first access to new show announcements, ticket drops, and more fun Q&amp;F news by joining our mailing list!</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdfrvzvsdDfbJ6nXGZU4zt-DqI2aqt3pslzWWA_B6EpPkafqA/viewform?usp=header" class="btn btn--outline contact-block__button" target="_blank" rel="noopener noreferrer">Join Mailing List</a>
       </article>
     </section>
@@ -126,10 +134,12 @@
     </div>
   </footer>
 
-  <script src="js/nav.js"></script>
+  <script defer src="js/nav.js"></script>
   <script>
-    QFNav.initMenu();
-    QFNav.initSubpageHeader();
+    document.addEventListener('DOMContentLoaded', function () {
+      QFNav.initMenu();
+      QFNav.initSubpageHeader();
+    });
   </script>
 </body>
 </html>
