@@ -11,6 +11,8 @@
   var lightboxDialog = document.getElementById('show-lightbox-dialog');
   var lightboxImage = document.getElementById('show-lightbox-image');
   var lightboxCaption = document.getElementById('show-lightbox-caption');
+  var touchStartX = null;
+  var touchStartY = null;
 
   function renderHeader(show) {
     document.title = show.title + ' | Quick & Funny Musicals';
@@ -116,6 +118,50 @@
     document.body.classList.remove('modal-open');
   }
 
+  function initLightboxSwipe() {
+    if (!lightboxImage) {
+      return;
+    }
+
+    lightboxImage.addEventListener('touchstart', function (event) {
+      if (!lightbox.classList.contains('is-open') || !event.touches.length) {
+        return;
+      }
+
+      touchStartX = event.touches[0].clientX;
+      touchStartY = event.touches[0].clientY;
+    }, { passive: true });
+
+    lightboxImage.addEventListener('touchend', function (event) {
+      if (!lightbox.classList.contains('is-open') || touchStartX === null || !event.changedTouches.length) {
+        touchStartX = null;
+        touchStartY = null;
+        return;
+      }
+
+      var touchEndX = event.changedTouches[0].clientX;
+      var touchEndY = event.changedTouches[0].clientY;
+      var deltaX = touchEndX - touchStartX;
+      var deltaY = touchEndY - touchStartY;
+      var absDeltaX = Math.abs(deltaX);
+      var absDeltaY = Math.abs(deltaY);
+      var swipeThreshold = 40;
+
+      touchStartX = null;
+      touchStartY = null;
+
+      if (absDeltaX < swipeThreshold || absDeltaX <= absDeltaY) {
+        return;
+      }
+
+      if (deltaX > 0) {
+        updateLightboxImage(lightboxImageIndex - 1);
+      } else {
+        updateLightboxImage(lightboxImageIndex + 1);
+      }
+    }, { passive: true });
+  }
+
   function initLightboxControls() {
     if (!lightbox) {
       return;
@@ -154,6 +200,8 @@
         updateLightboxImage(lightboxImageIndex + 1);
       }
     });
+
+    initLightboxSwipe();
   }
 
   function initShowPage() {

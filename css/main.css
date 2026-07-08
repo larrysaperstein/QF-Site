@@ -1203,8 +1203,9 @@ body.menu-open .site-header__logo {
   border: 2px solid var(--color-red);
   border-radius: 50%;
   color: var(--color-off-white);
-  font-size: 2rem;
-  line-height: 0;
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
   display: grid;
   place-items: center;
   text-align: center;
@@ -1249,6 +1250,7 @@ body.menu-open .site-header__logo {
   max-height: 72vh;
   object-fit: contain;
   display: block;
+  touch-action: pan-y pinch-zoom;
 }
 
 .show-lightbox__caption {
@@ -1652,33 +1654,48 @@ body.menu-open .site-header__logo {
   }
 
   .show-lightbox {
-    padding: var(--space-sm);
+    align-items: center;
+    padding:
+      max(var(--space-sm), env(safe-area-inset-top))
+      var(--space-sm)
+      calc(var(--space-xl) + env(safe-area-inset-bottom));
   }
 
   .show-lightbox__dialog {
+    width: 100%;
+    max-width: 100%;
     padding: 0;
   }
 
   .show-lightbox__close {
-    position: static;
-    margin-left: auto;
-    margin-right: 0;
-    margin-bottom: var(--space-xs);
+    position: fixed;
+    top: calc(var(--space-sm) + env(safe-area-inset-top));
+    right: calc(var(--space-sm) + env(safe-area-inset-right));
+    margin: 0;
   }
 
   .show-lightbox__controls {
-    position: static;
+    position: fixed;
+    top: calc(var(--space-sm) + env(safe-area-inset-top));
+    left: calc(var(--space-sm) + env(safe-area-inset-left));
+    right: calc(56px + var(--space-sm) + env(safe-area-inset-right));
     transform: none;
-    width: 100%;
-    justify-content: center;
-    gap: var(--space-md);
-    padding: var(--space-xs) 0 0;
+    justify-content: flex-start;
+    gap: var(--space-sm);
+    width: auto;
+    padding: 0;
+    z-index: 4;
+    pointer-events: auto;
   }
 
   .show-lightbox__nav {
     width: 38px;
     height: 38px;
-    font-size: 1.5rem;
+    font-size: 1.9rem;
+  }
+
+  .show-lightbox__image {
+    max-height: min(72dvh, 620px);
   }
 
   .dates,
