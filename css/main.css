@@ -784,7 +784,8 @@ body.menu-open .site-header__logo {
 
 .meet-us__emphasis {
   color: var(--color-red);
-  font-style: italic;
+  font-family: var(--font-handwritten);
+  font-size: var(--text-sm);
   font-weight: 700;
 }
 
