@@ -58,12 +58,14 @@
       '<button class="show-lightbox__backdrop" type="button" data-lightbox-close aria-label="Close gallery"></button>' +
       '<article class="show-lightbox__dialog" id="show-lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="show-lightbox-caption" tabindex="-1">' +
         '<button class="show-lightbox__close" type="button" data-lightbox-close aria-label="Close gallery"><span aria-hidden="true">&times;</span></button>' +
-        '<button class="show-lightbox__nav show-lightbox__nav--prev" id="show-lightbox-prev" type="button" aria-label="Previous image">&#8249;</button>' +
         '<div class="show-lightbox__media">' +
           '<img src="" alt="" id="show-lightbox-image" class="show-lightbox__image">' +
           '<p class="show-lightbox__caption" id="show-lightbox-caption"></p>' +
         '</div>' +
-        '<button class="show-lightbox__nav show-lightbox__nav--next" id="show-lightbox-next" type="button" aria-label="Next image">&#8250;</button>' +
+        '<div class="show-lightbox__controls">' +
+          '<button class="show-lightbox__nav show-lightbox__nav--prev" id="show-lightbox-prev" type="button" aria-label="Previous image">&#8249;</button>' +
+          '<button class="show-lightbox__nav show-lightbox__nav--next" id="show-lightbox-next" type="button" aria-label="Next image">&#8250;</button>' +
+        '</div>' +
       '</article>' +
     '</div>' +
     '<footer class="site-footer site-footer--subpage">' +
