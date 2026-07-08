@@ -33,7 +33,7 @@ var QFShowsData = (function () {
     },
     {
       id: 'white-lotus',
-      title: 'White Lotus',
+      title: 'The White Lotus Musical Parody',
       folder: 'whitelotus',
       logo: 'images/shows/whitelotus/whitelotus-logo.webp',
       pageUrl: 'show-white-lotus.html',
@@ -45,7 +45,7 @@ var QFShowsData = (function () {
     },
     {
       id: 'hlml',
-      title: 'Hot Love Mansion of Love (HLML)',
+      title: 'Hot Love Mansion of Love',
       folder: 'HLML',
       logo: 'images/shows/HLML/HLML-logo.webp',
       pageUrl: 'show-hlml.html',
@@ -84,7 +84,7 @@ var QFShowsData = (function () {
     },
     {
       id: 'ksw',
-      title: 'Kids Save World (KSW)',
+      title: 'Kids Save World',
       folder: 'ksw',
       logo: 'images/shows/ksw/ksw-logo.webp',
       pageUrl: 'show-ksw.html',
@@ -116,7 +116,7 @@ var QFShowsData = (function () {
     },
     {
       id: 'thanksgiving',
-      title: 'Go Thank Yourself (thanksgiving)',
+      title: 'Go Thank Yourself',
       folder: 'thanksgiving',
       logo: 'images/shows/thanksgiving/thanksgiving-logo.jpg',
       pageUrl: 'show-go-thank-yourself.html',
@@ -204,7 +204,7 @@ var QFShowsData = (function () {
     },
     {
       id: 'special-princess-unit',
-      title: 'Law & Order, Special Princess Unit (princess)',
+      title: 'Law & Order, Special Princess Unit',
       folder: 'princess',
       logo: 'images/shows/princess/princess-logo.jpg',
       pageUrl: 'show-special-princess-unit.html',
@@ -245,7 +245,7 @@ var QFShowsData = (function () {
     },
     {
       id: 'tttl',
-      title: 'TikTok Time Loop (TTTL)',
+      title: 'TikTok Time Loop',
       folder: 'TTTL',
       logo: 'images/shows/TTTL/TTTL-logo.webp',
       pageUrl: 'show-tiktok-time-loop.html',
