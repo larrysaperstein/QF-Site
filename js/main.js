@@ -10,6 +10,7 @@
   const heroLogoWrap = document.getElementById('hero-logo-wrap');
   const heroSlideshow = document.querySelector('.hero__slideshow');
   const datesList = document.getElementById('dates-list');
+  const aboutSection = document.getElementById('about');
   const aboutPhotos = document.querySelectorAll('.about__photo');
 
   const HERO_CONFIG = {
@@ -69,23 +70,40 @@
   }
 
   function initAboutGallery() {
-    if (!aboutPhotos.length) return;
+    if (!aboutPhotos.length || !aboutSection) return;
+
+    const revealDelays = {
+      'about__photo--2': 0,
+      'about__photo--3': 180,
+      'about__photo--1': 500,
+    };
 
     const observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
+            aboutPhotos.forEach(function (photo) {
+              let delay = 0;
+
+              Object.keys(revealDelays).forEach(function (className) {
+                if (photo.classList.contains(className)) {
+                  delay = revealDelays[className];
+                }
+              });
+
+              setTimeout(function () {
+                photo.classList.add('is-visible');
+              }, delay);
+            });
+
+            observer.unobserve(aboutSection);
           }
         });
       },
-      { threshold: 0.2, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0, rootMargin: '0px 0px -55% 0px' }
     );
 
-    aboutPhotos.forEach(function (photo) {
-      observer.observe(photo);
-    });
+    observer.observe(aboutSection);
   }
 
   document.addEventListener('DOMContentLoaded', function () {

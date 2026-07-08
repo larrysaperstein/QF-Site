@@ -3,17 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Upcoming Dates | Quick &amp; Funny Musicals</title>
-  <meta name="description" content="All upcoming performance dates for Quick &amp; Funny Musicals.">
+  <title>Our Shows | Quick &amp; Funny Musicals</title>
+  <meta name="description" content="Explore all Quick &amp; Funny Musicals productions.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Rock+Salt&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="css/main.css">
 </head>
-<body class="page-sub">
-
+<body class="page-sub page-shows">
   <aside class="nav-menu" id="nav-menu" aria-hidden="true">
     <nav class="nav-menu__inner" aria-label="Main navigation">
       <ul class="nav-menu__list">
@@ -29,14 +27,8 @@
   <header class="site-header site-header--scrolled" id="site-header">
     <div class="site-header__inner">
       <a href="index.html" class="site-header__logo" aria-label="Quick &amp; Funny Musicals — Home">
-        <img
-          src="images/QF Logo 3.png"
-          alt="Quick and Funny Musicals"
-          class="site-header__logo-image"
-          loading="eager"
-        >
+        <img src="images/QF Logo 3.png" alt="Quick and Funny Musicals" class="site-header__logo-image" loading="eager">
       </a>
-
       <div class="site-header__actions">
         <a
           href="https://www.instagram.com/quickandfunnymusicals/"
@@ -47,7 +39,6 @@
         >
           <img src="images/icon-instagram.svg" alt="" class="icon-instagram" width="24" height="24">
         </a>
-
         <button
           class="hamburger"
           id="hamburger"
@@ -64,14 +55,10 @@
     </div>
   </header>
 
-  <main class="page-upcoming">
-    <section class="dates dates--page" aria-labelledby="upcoming-heading">
-      <div class="dates__inner">
-        <h1 class="dates-page__heading" id="upcoming-heading">Upcoming Dates</h1>
-        <ul class="dates__list" id="dates-list" aria-live="polite">
-          <!-- Populated by JavaScript from Google Calendar API -->
-        </ul>
-      </div>
+  <main class="shows-page">
+    <section class="shows-listing" aria-labelledby="shows-heading">
+      <h1 class="shows-listing__heading" id="shows-heading">Our Shows</h1>
+      <div class="shows-listing__grid" id="shows-grid" aria-live="polite"></div>
     </section>
   </main>
 
@@ -80,9 +67,7 @@
       <p class="site-footer__tagline">
         Are we your kind of people? Don&rsquo;t risk missing our next show!
       </p>
-
       <a href="#" class="btn btn--red site-footer__cta">Stay In The Know</a>
-
       <a
         href="https://www.instagram.com/quickandfunnymusicals/"
         class="site-footer__social"
@@ -92,7 +77,6 @@
       >
         <img src="images/icon-instagram.svg" alt="" class="icon-instagram icon-instagram--red" width="28" height="28">
       </a>
-
       <nav class="site-footer__nav" aria-label="Footer navigation">
         <ul class="site-footer__nav-list">
           <li><a href="index.html" class="site-footer__link">Home</a></li>
@@ -102,11 +86,9 @@
           <li><a href="#" class="site-footer__link">Press/Contact</a></li>
         </ul>
       </nav>
-
       <p class="site-footer__copyright">
         &copy;2026 &ndash; Quick &amp; Funny Musicals. All Rights Reserved.
       </p>
-
       <p class="site-footer__credit">
         Website by
         <a href="https://sapersteindesign.com" class="site-footer__credit-link" target="_blank" rel="noopener noreferrer">Saperstein Creative</a>
@@ -114,9 +96,8 @@
     </div>
   </footer>
 
-  <script src="js/config.js"></script>
-  <script src="js/calendar.js"></script>
+  <script src="js/shows-data.js"></script>
   <script src="js/nav.js"></script>
-  <script src="js/upcoming.js"></script>
+  <script src="js/shows-index.js"></script>
 </body>
 </html>

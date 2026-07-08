@@ -54,20 +54,20 @@ var QFNav = (function () {
       return;
     }
 
-    const observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            siteHeader.classList.remove('site-header--scrolled');
-          } else {
-            siteHeader.classList.add('site-header--scrolled');
-          }
-        });
-      },
-      { threshold: 0, rootMargin: '-72px 0px 0px 0px' }
-    );
+    function updateHeaderState() {
+      const triggerPoint = heroEl.offsetTop + (heroEl.offsetHeight * 0.6);
+      const scrollBottomOfHeader = window.scrollY + siteHeader.offsetHeight;
 
-    observer.observe(heroEl);
+      if (scrollBottomOfHeader >= triggerPoint) {
+        siteHeader.classList.add('site-header--scrolled');
+      } else {
+        siteHeader.classList.remove('site-header--scrolled');
+      }
+    }
+
+    updateHeaderState();
+    window.addEventListener('scroll', updateHeaderState, { passive: true });
+    window.addEventListener('resize', updateHeaderState);
   }
 
   function initSubpageHeader() {
