@@ -16,6 +16,8 @@ var QFNav = (function () {
       toggleMenu(hamburger, navMenu);
     });
 
+    initMenuSubmenus(navMenu);
+
     navMenu.querySelectorAll('.nav-menu__link').forEach(function (link) {
       link.addEventListener('click', function () {
         closeMenu(hamburger, navMenu);
@@ -36,6 +38,10 @@ var QFNav = (function () {
     hamburger.setAttribute('aria-expanded', String(isOpen));
     hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
     navMenu.setAttribute('aria-hidden', String(!isOpen));
+
+    if (!isOpen) {
+      collapseMenuSubmenus(navMenu);
+    }
   }
 
   function closeMenu(hamburger, navMenu) {
@@ -45,6 +51,37 @@ var QFNav = (function () {
     hamburger.setAttribute('aria-expanded', 'false');
     hamburger.setAttribute('aria-label', 'Open menu');
     navMenu.setAttribute('aria-hidden', 'true');
+    collapseMenuSubmenus(navMenu);
+  }
+
+  function initMenuSubmenus(navMenu) {
+    const toggles = navMenu.querySelectorAll('[data-nav-submenu-toggle]');
+    if (!toggles.length) {
+      return;
+    }
+
+    toggles.forEach(function (toggle) {
+      toggle.addEventListener('click', function () {
+        const item = toggle.closest('.nav-menu__item--has-children');
+        if (!item) {
+          return;
+        }
+
+        const isExpanded = item.classList.toggle('is-expanded');
+        toggle.setAttribute('aria-expanded', String(isExpanded));
+      });
+    });
+  }
+
+  function collapseMenuSubmenus(navMenu) {
+    const expandedItems = navMenu.querySelectorAll('.nav-menu__item--has-children.is-expanded');
+    expandedItems.forEach(function (item) {
+      item.classList.remove('is-expanded');
+      const toggle = item.querySelector('[data-nav-submenu-toggle]');
+      if (toggle) {
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
   }
 
   function initScrollNav(heroEl) {

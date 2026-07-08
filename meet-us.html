@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Shows | Quick &amp; Funny Musicals</title>
-  <meta name="description" content="Explore all Quick &amp; Funny Musicals productions.">
+  <title>Meet Us | Quick &amp; Funny Musicals</title>
+  <meta name="description" content="Learn more about the story and history of Quick &amp; Funny Musicals.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Rock+Salt&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 </head>
-<body class="page-sub page-shows">
+<body class="page-sub">
   <aside class="nav-menu" id="nav-menu" aria-hidden="true">
     <nav class="nav-menu__inner" aria-label="Main navigation">
       <ul class="nav-menu__list">
@@ -65,18 +65,43 @@
     </div>
   </header>
 
-  <main class="shows-page">
-    <section class="shows-listing" aria-labelledby="shows-heading">
-      <h1 class="shows-listing__heading" id="shows-heading">Our Shows</h1>
-      <div class="shows-listing__grid" id="shows-grid" aria-live="polite"></div>
+  <main class="content-page">
+    <section class="content-hero" aria-labelledby="meet-us-heading">
+      <h1 class="content-hero__heading" id="meet-us-heading">Meet Us</h1>
+    </section>
+
+    <section class="content-section meet-us" aria-label="About Quick and Funny Musicals">
+      <div class="meet-us__copy">
+        <p>To understand who we are, we first must take you back. Back to a time long before recorded history. Back before Instagram, OpenAI, or even the Kardashians. A year known only as... 2009.</p>
+
+        <figure class="meet-us__figure meet-us__figure--left">
+          <img src="images/ucb-franklin.jpg" alt="Quick and Funny performers at UCB Franklin" class="meet-us__image" loading="lazy">
+        </figure>
+
+        <p>Founding members Kathryn Burns and Lindsay Hendrickson had an idea: What if we adapted longtime Upright Citizens Brigade show <em class="meet-us__emphasis">Quick &amp; Dirty Musicals</em> to something else? Something snapper and more on-the-nose? And thus, <em class="meet-us__emphasis">Quick &amp; Funny Musicals</em> was born.</p>
+
+        <p>For years, it operated as a variety show of 10-minute musicals at UCB in Los Angeles. In 2013, company members decided to formalize membership and began creating hour-long musical comedies. To date, our company has seen world-class alumni, such as <em class="meet-us__emphasis">Rachel Bloom, Jeff Hiller, and Eugene Cordero</em>.</p>
+
+        <figure class="meet-us__figure meet-us__figure--right">
+          <img src="images/fullcompany.jpeg" alt="Full Quick and Funny Musicals company" class="meet-us__image" loading="lazy">
+        </figure>
+
+        <p>After the Covid-19 pandemic, Q&amp;F was revitalized with a massive audition process and upwards of 10 new members who were hungry to take on new ideas, new shows, and new laughs! Since then, we have reliably performed in Los Angeles nearly every single month, presenting new shows up to 6 times per year.</p>
+
+        <p>In 2026, we developed fan-favorite <em class="meet-us__emphasis">Heated Rivalry: The Musical Parody!</em> which celebrated 10 consecutive sold-out performances in LA, and a massively successful Edinburgh Fringe Festival run. We can&rsquo;t wait to keep developing and performing new shows for years to come!</p>
+
+        <figure class="meet-us__figure meet-us__figure--left">
+          <img src="images/shows/heatedrivalry/heatedrivalry13.webp" alt="Heated Rivalry stage performance" class="meet-us__image" loading="lazy">
+        </figure>
+
+        <p>Please join our mailing list to stay up to date on all things Q&amp;F!</p>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer site-footer--subpage">
     <div class="site-footer__inner">
-      <p class="site-footer__tagline">
-        Are we your kind of people? Don&rsquo;t risk missing our next show!
-      </p>
+      <p class="site-footer__tagline">Are we your kind of people? Don&rsquo;t risk missing our next show!</p>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSdfrvzvsdDfbJ6nXGZU4zt-DqI2aqt3pslzWWA_B6EpPkafqA/viewform?usp=header" class="btn btn--red site-footer__cta" target="_blank" rel="noopener noreferrer">Stay In The Know</a>
       <a
         href="https://www.instagram.com/quickandfunnymusicals/"
@@ -98,9 +123,7 @@
           <li><a href="contact.html" class="site-footer__link">Contact</a></li>
         </ul>
       </nav>
-      <p class="site-footer__copyright">
-        &copy;2026 &ndash; Quick &amp; Funny Musicals. All Rights Reserved.
-      </p>
+      <p class="site-footer__copyright">&copy;2026 &ndash; Quick &amp; Funny Musicals. All Rights Reserved.</p>
       <p class="site-footer__credit">
         Website by
         <a href="https://sapersteindesign.com" class="site-footer__credit-link" target="_blank" rel="noopener noreferrer">Saperstein Creative</a>
@@ -108,8 +131,10 @@
     </div>
   </footer>
 
-  <script src="js/shows-data.js"></script>
   <script src="js/nav.js"></script>
-  <script src="js/shows-index.js"></script>
+  <script>
+    QFNav.initMenu();
+    QFNav.initSubpageHeader();
+  </script>
 </body>
 </html>
