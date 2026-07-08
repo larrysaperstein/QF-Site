@@ -34,11 +34,11 @@
     '<header class="site-header site-header--scrolled" id="site-header">' +
       '<div class="site-header__inner">' +
         '<a href="/" class="site-header__logo" aria-label="Quick &amp; Funny Musicals — Home">' +
-          '<img src="images/QF Logo 3.png" alt="Quick and Funny Musicals" class="site-header__logo-image" loading="eager">' +
+          '<img src="/images/QF Logo 3.png" alt="Quick and Funny Musicals" class="site-header__logo-image" loading="eager">' +
         '</a>' +
         '<div class="site-header__actions">' +
           '<a href="https://www.instagram.com/quickandfunnymusicals/" class="site-header__social" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">' +
-            '<img src="images/icon-instagram.svg" alt="" class="icon-instagram" width="24" height="24">' +
+            '<img src="/images/icon-instagram.svg" alt="" class="icon-instagram" width="24" height="24">' +
           '</a>' +
           '<button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">' +
             '<span class="hamburger__line"></span>' +
@@ -83,7 +83,7 @@
         '<p class="site-footer__tagline">Are we your kind of people? Don&rsquo;t risk missing our next show!</p>' +
         '<a href="https://docs.google.com/forms/d/e/1FAIpQLSdfrvzvsdDfbJ6nXGZU4zt-DqI2aqt3pslzWWA_B6EpPkafqA/viewform?usp=header" class="btn btn--red site-footer__cta" target="_blank" rel="noopener noreferrer">Stay In The Know</a>' +
         '<a href="https://www.instagram.com/quickandfunnymusicals/" class="site-footer__social" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">' +
-          '<img src="images/icon-instagram.svg" alt="" class="icon-instagram icon-instagram--red" width="28" height="28">' +
+          '<img src="/images/icon-instagram.svg" alt="" class="icon-instagram icon-instagram--red" width="28" height="28">' +
         '</a>' +
         '<nav class="site-footer__nav" aria-label="Footer navigation">' +
           '<ul class="site-footer__nav-list">' +

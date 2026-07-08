@@ -223,7 +223,12 @@
   }
 
   function setLightboxInertState(isInert) {
-    Array.prototype.forEach.call(document.body.children, function (el) {
+    var container = lightbox ? lightbox.parentElement : null;
+    if (!container) {
+      return;
+    }
+
+    Array.prototype.forEach.call(container.children, function (el) {
       if (el === lightbox) {
         return;
       }
