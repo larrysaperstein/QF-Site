@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "sync:company-bios": "node scripts/sync-company-bios.mjs",
+    "sync:show-credits": "python3 scripts/sync-show-credits.py",
     "generate:thumbs": "node scripts/generate-gallery-thumbs.mjs",
     "predev": "npm run sync:company-bios && npm run generate:thumbs",
     "dev": "astro dev",

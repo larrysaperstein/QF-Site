@@ -1,0 +1,82 @@
+---
+import type { ShowCredits } from '../lib/show-credits';
+import { formatCrewRoleLabel } from '../lib/show-credits';
+
+interface Props {
+  credits: ShowCredits;
+}
+
+const { credits } = Astro.props;
+---
+
+<section class="show-credits" aria-label="Production credits">
+  {
+    credits.crew.length > 0 && (
+      <div class="show-credits__crew">
+        {credits.crew.map((entry) => (
+          <div class="show-credits__role-block">
+            <p class="show-credits__role-label">
+              {formatCrewRoleLabel(entry.role, entry.people.length)}
+            </p>
+            <div
+              class:list={[
+                'show-credits__role-people',
+                entry.layout === 'stacked' && 'show-credits__role-people--stacked',
+              ]}
+            >
+              {entry.people.map((person) => (
+                <span class="show-credits__person">{person}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+  {
+    credits.songs.length > 0 && (
+      <div class="show-credits__section">
+        <h3 class="show-credits__section-heading">- SONGS -</h3>
+        <ul class="show-credits__songs">
+          {credits.songs.map((song) => (
+            <li class="show-credits__song">
+              <p class="show-credits__song-title">{song.title}</p>
+              {song.writers.length > 0 && (
+                <p class="show-credits__song-writers">{song.writers.join(' · ')}</p>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  {
+    credits.cast.length > 0 && (
+      <div class="show-credits__section">
+        <h3 class="show-credits__section-heading">- CAST -</h3>
+        <ul class="show-credits__cast">
+          {credits.cast.map((entry) => (
+            <li class="show-credits__cast-entry">
+              {entry.actors.map((actor, index) => (
+                <div class="show-credits__cast-row">
+                  <span
+                    class:list={[
+                      'show-credits__character',
+                      index > 0 && 'show-credits__character--placeholder',
+                    ]}
+                    aria-hidden={index > 0 ? true : undefined}
+                  >
+                    {index === 0 ? entry.character : ''}
+                  </span>
+                  <span class="show-credits__actor">{actor}</span>
+                </div>
+              ))}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+</section>

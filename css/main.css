@@ -43,11 +43,11 @@
   --diag-social-bottom: 68px;
   --diag-footer-depth: 88px;
   --diag-footer-peak: 54%;
-  --show-gallery-diag-a: 4%;
-  --show-gallery-diag-b: 5%;
-  --show-gallery-diag-c-left: 3%;
-  --show-gallery-diag-c-right: 7%;
-  --show-gallery-content-inset: clamp(2rem, 5vw, 3.5rem);
+  --show-gallery-diag-a-drop: 28px;
+  --show-gallery-diag-b-rise: 28px;
+  --show-gallery-diag-c-left: 22px;
+  --show-gallery-diag-c-right: 30px;
+  --show-gallery-content-inset: clamp(2rem, 3.5vw, 3rem);
   --hero-brand-width: clamp(320px, 72vw, 760px);
 
   /* Z-index scale */
@@ -1232,7 +1232,7 @@ body.menu-open .site-header__logo {
   border-radius: 50%;
   color: var(--color-off-white);
   background-color: var(--color-black);
-  font-size: 2rem;
+  padding: 0;
   line-height: 1;
   transition:
     background-color var(--transition-fast),
@@ -1371,11 +1371,56 @@ body.menu-open .site-header__logo {
   text-align: center;
 }
 
+.show-detail-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto var(--space-lg);
+}
+
+.show-detail-hero__return {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: var(--space-md);
+  color: var(--color-black);
+  font-family: var(--font-serif);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  text-align: left;
+  text-decoration: none;
+  transform-origin: center center;
+  transition: transform var(--transition-fast);
+}
+
+.show-detail-hero__return:hover,
+.show-detail-hero__return:focus-visible {
+  transform: scale(1.05);
+  outline: none;
+}
+
+.show-detail-hero__return-icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  transform: rotate(180deg);
+}
+
+.show-detail-hero__return-text {
+  display: block;
+}
+
 .show-detail__logo {
-  width: min(100%, 1040px);
+  width: auto;
+  max-width: min(100%, 1040px);
   max-height: 64vh;
   object-fit: contain;
-  margin: 0 auto var(--space-lg);
+  display: block;
 }
 
 .show-description__text {
@@ -1408,12 +1453,12 @@ body.menu-open .site-header__logo {
 
 .show-page--diag-a .show-gallery,
 .show-page--diag-a .show-gallery__shape {
-  clip-path: polygon(0 0, 100% var(--show-gallery-diag-a), 100% 100%, 0 100%);
+  clip-path: polygon(0 0, 100% var(--show-gallery-diag-a-drop), 100% 100%, 0 100%);
 }
 
 .show-page--diag-b .show-gallery,
 .show-page--diag-b .show-gallery__shape {
-  clip-path: polygon(0 var(--show-gallery-diag-b), 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(0 var(--show-gallery-diag-b-rise), 100% 0, 100% 100%, 0 100%);
 }
 
 .show-page--diag-c .show-gallery,
@@ -1426,12 +1471,32 @@ body.menu-open .site-header__logo {
   );
 }
 
+.show-page--diag-a .show-gallery__inner {
+  padding-top: calc(
+    var(--show-gallery-diag-a-drop) + var(--show-gallery-content-inset) + var(--space-md)
+  );
+}
+
+.show-page--diag-b .show-gallery__inner {
+  padding-top: calc(
+    var(--show-gallery-diag-b-rise) + var(--show-gallery-content-inset) + var(--space-md)
+  );
+}
+
+.show-page--diag-c .show-gallery__inner {
+  padding-top: calc(
+    var(--show-gallery-diag-c-right) + var(--show-gallery-content-inset) + var(--space-md)
+  );
+}
+
 .show-gallery__inner {
   position: relative;
   z-index: 1;
   max-width: 1120px;
   margin: 0 auto;
-  padding: calc(var(--space-lg) + var(--show-gallery-content-inset)) var(--space-lg) var(--space-2xl);
+  padding-right: var(--space-lg);
+  padding-bottom: var(--space-2xl);
+  padding-left: var(--space-lg);
 }
 
 .show-gallery__heading {
@@ -1448,7 +1513,139 @@ body.menu-open .site-header__logo {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.show-credits {
+  margin-top: calc(var(--space-xl) + var(--space-sm));
   margin-bottom: calc(var(--space-lg) * 1.5);
+  font-family: var(--font-serif);
+}
+
+.show-credits__crew {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.show-credits__role-block {
+  text-align: center;
+}
+
+.show-credits__role-label {
+  color: var(--color-red);
+  font-size: var(--text-md);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: var(--space-xs);
+}
+
+.show-credits__role-people {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.show-credits__role-people--stacked {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.show-credits__person {
+  color: var(--color-off-white);
+  font-size: clamp(1.05rem, 2.1vw, 1.3rem);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.show-credits__section {
+  margin-bottom: var(--space-xl);
+}
+
+.show-credits__section-heading {
+  color: var(--color-red);
+  font-size: var(--text-lg);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  margin-bottom: var(--space-lg);
+  text-align: center;
+}
+
+.show-credits__songs,
+.show-credits__cast {
+  list-style: none;
+}
+
+.show-credits__song + .show-credits__song {
+  margin-top: var(--space-lg);
+}
+
+.show-credits__song-title {
+  color: var(--color-off-white);
+  font-size: clamp(1rem, 1.9vw, 1.15rem);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.show-credits__song-writers {
+  color: var(--color-off-white);
+  font-size: var(--text-base);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.4;
+  margin-top: 0.25rem;
+  text-align: center;
+}
+
+.show-credits__cast {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin: 0 auto;
+  max-width: 42rem;
+}
+
+.show-credits__cast-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.show-credits__cast-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: var(--space-lg);
+  align-items: baseline;
+}
+
+.show-credits__character {
+  color: var(--color-off-white);
+  font-size: var(--text-sm);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: right;
+}
+
+.show-credits__character--placeholder {
+  visibility: hidden;
+}
+
+.show-credits__actor {
+  color: var(--color-off-white);
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: left;
 }
 
 .show-gallery__item {
@@ -1541,7 +1738,7 @@ body.menu-open .site-header__logo {
   border-radius: 50%;
   color: var(--color-off-white);
   background-color: var(--color-black);
-  font-size: 2rem;
+  padding: 0;
   line-height: 1;
   transition:
     background-color var(--transition-fast),
@@ -1562,12 +1759,11 @@ body.menu-open .site-header__logo {
   border: 2px solid var(--color-red);
   border-radius: 50%;
   color: var(--color-off-white);
-  font-size: 2.25rem;
-  font-weight: 700;
+  padding: 0;
   line-height: 1;
-  display: grid;
-  place-items: center;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 3;
   transition:
     background-color var(--transition-fast),
@@ -1616,6 +1812,53 @@ body.menu-open .site-header__logo {
   margin-top: var(--space-xs);
   font-size: var(--text-sm);
   opacity: 0.8;
+}
+
+.overlay-control-icon {
+  display: block;
+  flex-shrink: 0;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  pointer-events: none;
+}
+
+.overlay-control-icon--close {
+  width: 18px;
+  height: 18px;
+  filter:
+    brightness(0)
+    invert(1)
+    drop-shadow(0 0 0.35px #fff)
+    drop-shadow(0 0 0.35px #fff);
+}
+
+.overlay-control-icon--nav {
+  width: 28px;
+  height: 28px;
+}
+
+.overlay-control-icon--prev {
+  transform: rotate(180deg);
+}
+
+.company-modal__close:hover .overlay-control-icon--close,
+.company-modal__close:focus-visible .overlay-control-icon--close,
+.show-lightbox__close:hover .overlay-control-icon--close,
+.show-lightbox__close:focus-visible .overlay-control-icon--close {
+  filter:
+    brightness(0)
+    invert(1)
+    drop-shadow(0 0 0.35px #fff)
+    drop-shadow(0 0 0.35px #fff);
+}
+
+.company-modal__close:hover .overlay-control-icon--nav,
+.company-modal__close:focus-visible .overlay-control-icon--nav,
+.show-lightbox__close:hover .overlay-control-icon--nav,
+.show-lightbox__close:focus-visible .overlay-control-icon--nav,
+.show-lightbox__nav:hover .overlay-control-icon,
+.show-lightbox__nav:focus-visible .overlay-control-icon {
+  filter: brightness(0) invert(1);
 }
 
 /* --------------------------------------------------------------------------
@@ -2078,15 +2321,82 @@ body.menu-open .site-header__logo {
     padding-bottom: var(--space-sm);
   }
 
+  .show-detail-hero__return {
+    gap: 0.3rem;
+    margin-bottom: var(--space-sm);
+    font-size: var(--text-xs);
+  }
+
+  .show-detail-hero__return-icon {
+    width: 16px;
+    height: 16px;
+  }
+
   .show-gallery__inner {
     padding-left: var(--space-md);
     padding-right: var(--space-md);
-    padding-top: calc(var(--space-md) + clamp(1.5rem, 4vw, 2.5rem));
+  }
+
+  .show-page--diag-a .show-gallery__inner,
+  .show-page--diag-b .show-gallery__inner,
+  .show-page--diag-c .show-gallery__inner {
+    padding-top: calc(var(--show-gallery-content-inset) + var(--space-md) + 28px);
   }
 
   .show-gallery__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-sm);
+  }
+
+  .show-credits {
+    margin-top: calc(var(--space-lg) + var(--space-sm));
+  }
+
+  .show-credits__crew {
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+
+  .show-credits__role-label {
+    font-size: var(--text-base);
+  }
+
+  .show-credits__person {
+    font-size: clamp(1rem, 4.2vw, 1.2rem);
+  }
+
+  .show-credits__section {
+    margin-bottom: var(--space-lg);
+  }
+
+  .show-credits__section-heading {
+    font-size: var(--text-md);
+    margin-bottom: var(--space-md);
+  }
+
+  .show-credits__song + .show-credits__song {
+    margin-top: var(--space-md);
+  }
+
+  .show-credits__song-title {
+    font-size: var(--text-base);
+  }
+
+  .show-credits__song-writers {
+    font-size: var(--text-sm);
+  }
+
+  .show-credits__cast {
+    max-width: 100%;
+  }
+
+  .show-credits__cast-row {
+    column-gap: var(--space-sm);
+  }
+
+  .show-credits__character,
+  .show-credits__actor {
+    font-size: var(--text-sm);
   }
 
   .show-lightbox {
@@ -2127,7 +2437,16 @@ body.menu-open .site-header__logo {
   .show-lightbox__nav {
     width: 38px;
     height: 38px;
-    font-size: 1.9rem;
+  }
+
+  .overlay-control-icon--nav {
+    width: 24px;
+    height: 24px;
+  }
+
+  .overlay-control-icon--close {
+    width: 16px;
+    height: 16px;
   }
 
   .show-lightbox__image {

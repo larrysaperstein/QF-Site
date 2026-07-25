@@ -5,6 +5,8 @@ import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import { getShowBySlug, getShowSlugs } from '../../data/shows';
 import { getGalleryThumbSrc } from '../../lib/gallery';
+import { getShowCredits, hasShowCredits } from '../../lib/show-credits';
+import ShowCredits from '../../components/ShowCredits.astro';
 
 export function getStaticPaths() {
   return getShowSlugs().map((slug) => ({ params: { slug } }));
@@ -23,6 +25,7 @@ const siteOrigin = 'https://quickandfunnymusicals.com';
 const ogImage = `${siteOrigin}${show.logo}`;
 const ogImageType = show.logo.endsWith('.webp') ? 'image/webp' : 'image/jpeg';
 const bodyClass = `page-sub show-page show-page--diag-${show.diagonalVariant}`;
+const showCredits = getShowCredits(slug!);
 ---
 
 <BaseLayout
@@ -39,13 +42,26 @@ const bodyClass = `page-sub show-page show-page--diag-${show.diagonalVariant}`;
   <main class="show-detail-page" id="main-content">
     <section class="show-detail-intro" aria-labelledby="show-logo-heading">
       <h1 class="visually-hidden" id="show-logo-heading">{show.title}</h1>
-      <img
-        id="show-logo"
-        class="show-detail__logo"
-        src={show.logo}
-        alt={`${show.title} logo`}
-        loading="eager"
-      />
+      <div class="show-detail-hero">
+        <a href="/shows" class="show-detail-hero__return">
+          <img
+            class="show-detail-hero__return-icon"
+            src="/images/arrowhead.svg"
+            alt=""
+            aria-hidden="true"
+            width="18"
+            height="18"
+          />
+          <span class="show-detail-hero__return-text">Return To All Shows</span>
+        </a>
+        <img
+          id="show-logo"
+          class="show-detail__logo"
+          src={show.logo}
+          alt={`${show.title} logo`}
+          loading="eager"
+        />
+      </div>
       <div class="show-description" id="show-description">
         {
           show.descriptionParagraphs.map((paragraph) => (
@@ -92,6 +108,7 @@ const bodyClass = `page-sub show-page show-page--diag-${show.diagonalVariant}`;
             ))
           }
         </div>
+        {hasShowCredits(showCredits) && <ShowCredits credits={showCredits} />}
         <a href="/shows" class="btn btn--outline show-gallery__return">Return To All Shows</a>
       </div>
     </section>
@@ -110,7 +127,14 @@ const bodyClass = `page-sub show-page show-page--diag-${show.diagonalVariant}`;
     >
       <h2 class="visually-hidden" id="show-lightbox-title">{show.title} image gallery</h2>
       <button class="show-lightbox__close" type="button" data-lightbox-close aria-label="Close gallery">
-        <span aria-hidden="true">&times;</span>
+        <img
+          class="overlay-control-icon overlay-control-icon--close"
+          src="/images/x-lg.svg"
+          alt=""
+          aria-hidden="true"
+          width="18"
+          height="18"
+        />
       </button>
       <div class="show-lightbox__media">
         <img alt="" id="show-lightbox-image" class="show-lightbox__image" />
@@ -121,14 +145,32 @@ const bodyClass = `page-sub show-page show-page--diag-${show.diagonalVariant}`;
           class="show-lightbox__nav show-lightbox__nav--prev"
           id="show-lightbox-prev"
           type="button"
-          aria-label="Previous image">&#8249;</button
+          aria-label="Previous image"
         >
+          <img
+            class="overlay-control-icon overlay-control-icon--nav overlay-control-icon--prev"
+            src="/images/arrowhead.svg"
+            alt=""
+            aria-hidden="true"
+            width="28"
+            height="28"
+          />
+        </button>
         <button
           class="show-lightbox__nav show-lightbox__nav--next"
           id="show-lightbox-next"
           type="button"
-          aria-label="Next image">&#8250;</button
+          aria-label="Next image"
         >
+          <img
+            class="overlay-control-icon overlay-control-icon--nav"
+            src="/images/arrowhead.svg"
+            alt=""
+            aria-hidden="true"
+            width="28"
+            height="28"
+          />
+        </button>
       </div>
     </article>
   </div>
