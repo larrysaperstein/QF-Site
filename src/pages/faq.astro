@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { faqItems } from '../data/faq';
+
+const pageTitle = 'FAQ | Quick & Funny Musicals';
+const pageDescription =
+  'Frequently asked questions about Quick & Funny Musicals shows, accessibility, auditions, and partnerships.';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalPath="/faq"
+>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <Nav slot="before-main" />
+  <SiteHeader slot="before-main" />
+
+  <main class="content-page" id="main-content">
+    <section class="content-hero" aria-labelledby="faq-heading">
+      <h1 class="content-hero__heading" id="faq-heading">FAQ</h1>
+    </section>
+
+    <section class="content-section faq" aria-label="Frequently asked questions">
+      <div class="faq-list" id="faq-list" aria-live="polite">
+        {
+          faqItems.map((item, index) => (
+            <article class="faq-item">
+              <button
+                class="faq-item__trigger"
+                type="button"
+                id={`faq-question-${index}`}
+                aria-expanded="false"
+                aria-controls={`faq-answer-${index}`}
+              >
+                <span class="faq-item__question">{item.question}</span>
+                <span class="faq-item__icon" aria-hidden="true">
+                  +
+                </span>
+              </button>
+              <div
+                class="faq-item__answer-wrap"
+                id={`faq-answer-${index}`}
+                role="region"
+                aria-labelledby={`faq-question-${index}`}
+                aria-hidden="true"
+              >
+                <div class="faq-item__answer">
+                  <p>{item.answer}</p>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter slot="after-main" />
+
+  <script slot="scripts" defer src="/js/faq-accordion.js"></script>
+</BaseLayout>

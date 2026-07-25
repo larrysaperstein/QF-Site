@@ -1,0 +1,20 @@
+{
+  "name": "qf-site",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "sync:company-bios": "node scripts/sync-company-bios.mjs",
+    "generate:thumbs": "node scripts/generate-gallery-thumbs.mjs",
+    "predev": "npm run sync:company-bios && npm run generate:thumbs",
+    "dev": "astro dev",
+    "prebuild": "npm run sync:company-bios && npm run generate:thumbs",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.7.10"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
+  }
+}

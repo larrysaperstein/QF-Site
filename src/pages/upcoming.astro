@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+const pageTitle = 'Upcoming Dates | Quick & Funny Musicals';
+const pageDescription = 'All upcoming performance dates for Quick & Funny Musicals.';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalPath="/upcoming"
+>
+  <Nav slot="before-main" />
+  <SiteHeader slot="before-main" />
+
+  <main class="page-upcoming" id="main-content">
+    <section class="dates dates--page" aria-labelledby="upcoming-heading">
+      <div class="dates__inner">
+        <h1 class="dates-page__heading" id="upcoming-heading">Upcoming Dates</h1>
+        <ul class="dates__list" id="dates-list" aria-live="polite"></ul>
+        <noscript
+          ><p class="visually-hidden"
+            >JavaScript is disabled. Upcoming dates cannot be loaded dynamically.</p
+          ></noscript
+        >
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter slot="after-main" />
+
+  <script slot="scripts" defer src="/js/config.js"></script>
+  <script slot="scripts" defer src="/js/calendar.js"></script>
+  <script slot="scripts" defer src="/js/upcoming.js"></script>
+</BaseLayout>

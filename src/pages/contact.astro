@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+const pageTitle = 'Contact | Quick & Funny Musicals';
+const pageDescription = 'Contact Quick & Funny Musicals and join the mailing list for show updates.';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalPath="/contact"
+>
+  <Nav slot="before-main" />
+  <SiteHeader slot="before-main" />
+
+  <main class="content-page" id="main-content">
+    <section class="content-hero" aria-labelledby="contact-heading">
+      <h1 class="content-hero__heading" id="contact-heading">Contact</h1>
+    </section>
+
+    <section class="content-section contact-sections" aria-label="Contact options">
+      <article class="contact-block" aria-labelledby="get-in-touch-heading">
+        <h2 class="contact-block__heading" id="get-in-touch-heading">Get In Touch</h2>
+        <p class="contact-block__text"
+          >Questions, interview requests, venue partnerships, or anything else on your mind? We would love to
+          hear from you.</p
+        >
+        <p class="contact-block__text">
+          Send us an email at
+          <a class="contact-block__email" href="mailto:quickandfunnymusicals@gmail.com"
+            >quickandfunnymusicals@gmail.com</a
+          >
+          and one of our company managers will get back to you ASAP.
+        </p>
+      </article>
+
+      <article class="contact-block" aria-labelledby="mailing-list-heading">
+        <h2 class="contact-block__heading" id="mailing-list-heading">Join Our Mailing List</h2>
+        <p class="contact-block__text"
+          >Get first access to new show announcements, ticket drops, and more fun Q&amp;F news by joining
+          our mailing list!</p
+        >
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdfrvzvsdDfbJ6nXGZU4zt-DqI2aqt3pslzWWA_B6EpPkafqA/viewform?usp=header"
+          class="btn btn--outline contact-block__button"
+          target="_blank"
+          rel="noopener noreferrer">Join Mailing List</a
+        >
+      </article>
+    </section>
+  </main>
+
+  <SiteFooter slot="after-main" />
+
+  <script is:inline slot="scripts">
+    document.addEventListener('DOMContentLoaded', function () {
+      QFNav.initMenu();
+      QFNav.initSubpageHeader();
+    });
+  </script>
+</BaseLayout>

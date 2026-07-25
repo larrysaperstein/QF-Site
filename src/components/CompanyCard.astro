@@ -1,0 +1,33 @@
+---
+import type { CompanyPerson } from '../lib/company';
+import { getImageCandidates } from '../lib/company';
+
+interface Props {
+  person: CompanyPerson;
+}
+
+const { person } = Astro.props;
+const imageCandidates = getImageCandidates(person.image);
+---
+
+<button
+  class="company-card"
+  type="button"
+  data-person-id={person.id}
+  aria-label={'Read ' + person.name + ' bio'}
+>
+  <span class="company-card__image-wrap">
+    <span class="company-card__placeholder" aria-hidden="true">{person.name.charAt(0)}</span>
+    <img
+      class="company-card__image"
+      src={imageCandidates[0]}
+      data-image-candidates={JSON.stringify(imageCandidates)}
+      alt={person.name}
+      loading="lazy"
+      decoding="async"
+    />
+  </span>
+  <span class="company-card__body">
+    <span class="company-card__name">{person.name}</span>
+  </span>
+</button>

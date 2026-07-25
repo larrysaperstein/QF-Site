@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import CompanyCard from '../components/CompanyCard.astro';
+import { getSortedAlumni, getSortedCurrentCompany } from '../lib/company';
+
+const pageTitle = 'Company | Quick & Funny Musicals';
+const pageDescription = 'Meet the Quick & Funny Musicals company and alumni.';
+
+const currentCompany = getSortedCurrentCompany();
+const alumni = getSortedAlumni();
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalPath="/company"
+  bodyClass="page-sub page-company"
+>
+  <Nav slot="before-main" />
+  <SiteHeader slot="before-main" />
+
+  <main class="company-page" id="main-content">
+    <section class="company-hero" id="company" aria-labelledby="company-heading">
+      <h1 class="company-hero__heading" id="company-heading">Company</h1>
+      <a href="#alumni" class="btn btn--outline company-jump-link">View Alumni</a>
+    </section>
+
+    <section class="company-section" aria-labelledby="company-current-heading">
+      <h2 class="visually-hidden" id="company-current-heading">Current Company</h2>
+      <div class="company-grid" id="company-grid" aria-live="polite">
+        {currentCompany.map((person) => <CompanyCard person={person} />)}
+      </div>
+    </section>
+
+    <section class="company-section company-section--alumni" id="alumni" aria-labelledby="company-alumni-heading">
+      <h2 class="company-section__heading" id="company-alumni-heading">Alumni</h2>
+      <a href="#company" class="btn btn--outline company-jump-link company-jump-link--section"
+        >View Company</a
+      >
+      <div class="company-grid" id="alumni-grid" aria-live="polite">
+        {alumni.map((person) => <CompanyCard person={person} />)}
+      </div>
+    </section>
+  </main>
+
+  <div class="company-modal" id="company-modal" aria-hidden="true" slot="after-main">
+    <button class="company-modal__backdrop" type="button" data-modal-close aria-label="Close profile"
+    ></button>
+    <article
+      class="company-modal__dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="company-modal-title"
+      tabindex="-1"
+    >
+      <button class="company-modal__close" type="button" data-modal-close aria-label="Close profile">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="company-modal__body">
+        <div class="company-modal__media">
+          <img alt="" class="company-modal__image" id="company-modal-image" />
+        </div>
+        <div class="company-modal__content">
+          <p class="company-modal__eyebrow" id="company-modal-role"></p>
+          <h2 class="company-modal__name" id="company-modal-title"></h2>
+          <div class="company-modal__bio" id="company-modal-bio"></div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <SiteFooter slot="after-main" />
+
+  <script slot="scripts" defer src="/js/company-images.js"></script>
+  <script slot="scripts" defer src="/js/company-modal.js"></script>
+</BaseLayout>

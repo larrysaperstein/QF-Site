@@ -1,0 +1,227 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import HomeHeader from '../components/HomeHeader.astro';
+import HomeFooter from '../components/HomeFooter.astro';
+
+const pageTitle = 'Quick & Funny Musicals';
+const pageDescription =
+  'Quick & Funny Musicals — a musical comedy team known for irreverent parodies and bold, hilarious storytelling.';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalPath="/"
+  bodyClass=""
+>
+  <script is:inline slot="head" type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Quick & Funny Musicals",
+      "url": "https://quickandfunnymusicals.com/",
+      "logo": "https://quickandfunnymusicals.com/images/favicon.png",
+      "sameAs": [
+        "https://www.instagram.com/quickandfunnymusicals/"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "quickandfunnymusicals@gmail.com"
+      }
+    }
+  </script>
+
+  <Nav slot="before-main" />
+  <HomeHeader slot="before-main" />
+
+  <main id="main-content">
+    <h1 class="visually-hidden">Quick &amp; Funny Musicals</h1>
+
+    <section class="hero" id="hero" aria-label="Welcome">
+      <div class="hero__slideshow" aria-hidden="true">
+        <div
+          class="hero__slide hero__slide--active"
+          style="background-image: url('/images/ensemble-happy.jpg'); background-image: image-set(url('/images/ensemble-happy.webp') type('image/webp'), url('/images/ensemble-happy.jpg') type('image/jpeg'));"
+        >
+        </div>
+        <div
+          class="hero__slide"
+          style="background-image: url('/images/hero-2.jpg'); background-image: image-set(url('/images/hero-2.webp') type('image/webp'), url('/images/hero-2.jpg') type('image/jpeg'));"
+        >
+        </div>
+        <div
+          class="hero__slide"
+          style="background-image: url('/images/hero-3.jpg'); background-image: image-set(url('/images/hero-3.webp') type('image/webp'), url('/images/hero-3.jpg') type('image/jpeg'));"
+        >
+        </div>
+        <div
+          class="hero__slide"
+          style="background-image: url('/images/hero-4.jpg'); background-image: image-set(url('/images/hero-4.webp') type('image/webp'), url('/images/hero-4.jpg') type('image/jpeg'));"
+        >
+        </div>
+        <div
+          class="hero__slide"
+          style="background-image: url('/images/hero-5.jpg'); background-image: image-set(url('/images/hero-5.webp') type('image/webp'), url('/images/hero-5.jpg') type('image/jpeg'));"
+        >
+        </div>
+      </div>
+
+      <div class="hero__intro" id="hero-intro">
+        <div class="hero__lottie" id="hero-lottie" aria-hidden="true"></div>
+      </div>
+      <noscript
+        ><p class="visually-hidden"
+          >JavaScript is disabled. Animated intro content is unavailable, but all core information is
+          still accessible.</p
+        ></noscript
+      >
+
+      <div class="hero__logo-wrap" id="hero-logo-wrap" aria-hidden="true">
+        <img
+          src="/images/QF Logo 3.png"
+          alt="Quick and Funny Musicals"
+          class="hero__logo-image"
+          id="hero-logo"
+          loading="eager"
+        />
+        <img
+          src="/images/arrow.png"
+          alt=""
+          class="hero__scroll-arrow"
+          loading="eager"
+          aria-hidden="true"
+        />
+      </div>
+    </section>
+
+    <section class="dates" id="dates" aria-labelledby="dates-heading">
+      <h2 class="visually-hidden" id="dates-heading">Upcoming Dates</h2>
+      <div class="dates__inner">
+        <ul class="dates__list" id="dates-list" aria-live="polite"></ul>
+        <a href="/upcoming" class="btn btn--outline dates__more">View More Dates</a>
+      </div>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-heading">
+      <div class="about__shape" aria-hidden="true"></div>
+      <div class="about__inner">
+        <div class="about__content">
+          <h2 class="visually-hidden" id="about-heading">About Quick &amp; Funny Musicals</h2>
+
+          <p class="about__text">
+            We are the
+            <span class="about__accent">musical comedy team</span>
+            known for creating ambitious, ridiculous original and parody musicals... and putting them on
+            stage before anyone can talk us out of it.
+          </p>
+
+          <p class="about__text">
+            In 2026, we produced the fan-favorite
+            <a
+              href="https://heatedrivalrymusicalparody.com"
+              class="about__accent about__accent-link"
+              target="_blank"
+              rel="noopener noreferrer">Heated Rivalry: The Musical Parody</a
+            >
+            which celebrated 10 consecutive sold-out performances in Los Angeles and a massively successful
+            Edinburgh Fringe Festival run.
+          </p>
+
+          <p class="about__text">
+            We
+            <span class="about__accent">write, perform, direct, and produce</span>
+            each show we devise, together as a team. Oh yeah, and we do it all every month. We’ve developed
+            a slate of wildly unique, delightfully weird, and downright hilarious original musicals that we
+            can’t wait for you to explore and see on stage.
+          </p>
+
+          <div class="about__buttons">
+            <a href="/meet-us" class="btn btn--red">Meet Us</a>
+            <a href="/shows" class="btn btn--red">Explore Shows</a>
+          </div>
+        </div>
+
+        <figure class="about__gallery" aria-label="Performance photos">
+          <picture>
+            <source srcset="/images/kids-save-world.webp" type="image/webp" />
+            <img
+              src="/images/kids-save-world.jpg"
+              alt="Cast members performing on stage"
+              class="about__photo about__photo--1"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+          <picture>
+            <source srcset="/images/yes-chef.webp" type="image/webp" />
+            <img
+              src="/images/yes-chef.JPG"
+              alt="Performers in costume"
+              class="about__photo about__photo--2"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+          <picture>
+            <source srcset="/images/other-cats.webp" type="image/webp" />
+            <img
+              src="/images/other-cats.JPG"
+              alt="Ensemble on stage"
+              class="about__photo about__photo--3"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+        </figure>
+      </div>
+    </section>
+
+    <section class="social" id="social" aria-labelledby="social-heading">
+      <h2 class="social__heading" id="social-heading">Social Media Moments</h2>
+      <div class="social__grid">
+        <article class="social__embed" aria-label="YouTube Short: Heated Rivalry clip">
+          <iframe
+            class="social__iframe"
+            src="https://www.youtube.com/embed/gcc6m4kFEds"
+            title="Quick and Funny Musicals YouTube Short 1"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+        </article>
+        <article class="social__embed" aria-label="YouTube Short: Company clip 2">
+          <iframe
+            class="social__iframe"
+            src="https://www.youtube.com/embed/4N2nS-BmrS4"
+            title="Quick and Funny Musicals YouTube Short 2"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+        </article>
+        <article class="social__embed" aria-label="YouTube Short: Company clip 3">
+          <iframe
+            class="social__iframe"
+            src="https://www.youtube.com/embed/53fqD5bUhlg"
+            title="Quick and Funny Musicals YouTube Short 3"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <HomeFooter slot="after-main" />
+
+  <script
+    slot="scripts"
+    defer
+    src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+  <script slot="scripts" defer src="/js/config.js"></script>
+  <script slot="scripts" defer src="/js/calendar.js"></script>
+  <script slot="scripts" defer src="/js/main.js"></script>
+</BaseLayout>

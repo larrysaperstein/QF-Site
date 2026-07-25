@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { shows } from '../../data/shows';
+
+const pageTitle = 'Our Shows | Quick & Funny Musicals';
+const pageDescription = 'Explore all Quick & Funny Musicals productions.';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalPath="/shows"
+  bodyClass="page-sub page-shows"
+>
+  <Nav slot="before-main" />
+  <SiteHeader slot="before-main" />
+
+  <main class="shows-page" id="main-content">
+    <section class="shows-listing" aria-labelledby="shows-heading">
+      <h1 class="shows-listing__heading" id="shows-heading">Our Shows</h1>
+      <div class="shows-listing__grid" id="shows-grid" aria-live="polite">
+        {
+          shows.map((show) => (
+            <article class="shows-card">
+              <a
+                class="shows-card__link"
+                href={show.pageUrl}
+                aria-label={'Open ' + show.title + ' page'}
+              >
+                <img
+                  class="shows-card__image"
+                  src={show.logo}
+                  alt={show.title + ' logo'}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter slot="after-main" />
+
+  <script is:inline slot="scripts">
+    document.addEventListener('DOMContentLoaded', function () {
+      QFNav.initMenu();
+      QFNav.initSubpageHeader();
+    });
+  </script>
+</BaseLayout>

@@ -1,0 +1,47 @@
+RewriteEngine On
+
+# Redirect legacy HTML URLs to clean URLs.
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+RewriteRule ^index\.html$ / [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+((?:shows|company|upcoming|meet-us|faq|contact))\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+show-heated-rivalry\.html[\s?] [NC]
+RewriteRule ^show-heated-rivalry\.html$ /shows/heated-rivalry [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+show-white-lotus\.html[\s?] [NC]
+RewriteRule ^show-white-lotus\.html$ /shows/white-lotus [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+show-hlml\.html[\s?] [NC]
+RewriteRule ^show-hlml\.html$ /shows/hlml [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+show-other-cats\.html[\s?] [NC]
+RewriteRule ^show-other-cats\.html$ /shows/other-cats [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+show-ksw\.html[\s?] [NC]
+RewriteRule ^show-ksw\.html$ /shows/ksw [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+show-meet-cute\.html[\s?] [NC]
+RewriteRule ^show-meet-cute\.html$ /shows/meet-cute [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+show-go-thank-yourself\.html[\s?] [NC]
+RewriteRule ^show-go-thank-yourself\.html$ /shows/go-thank-yourself [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+show-period-piece\.html[\s?] [NC]
+RewriteRule ^show-period-piece\.html$ /shows/period-piece [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+show-queer-as-folk-songs\.html[\s?] [NC]
+RewriteRule ^show-queer-as-folk-songs\.html$ /shows/queer-as-folk-songs [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+show-mall-wars\.html[\s?] [NC]
+RewriteRule ^show-mall-wars\.html$ /shows/mall-wars [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+show-yes-chef\.html[\s?] [NC]
+RewriteRule ^show-yes-chef\.html$ /shows/yes-chef [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+show-special-princess-unit\.html[\s?] [NC]
+RewriteRule ^show-special-princess-unit\.html$ /shows/special-princess-unit [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+show-a-picket-line\.html[\s?] [NC]
+RewriteRule ^show-a-picket-line\.html$ /shows/a-picket-line [R=301,L]
+RewriteCond %{THE_REQUEST} \s/+show-tiktok-time-loop\.html[\s?] [NC]
+RewriteRule ^show-tiktok-time-loop\.html$ /shows/tiktok-time-loop [R=301,L]
+
+# Serve existing files and directories as-is.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Map clean URLs to Astro directory index files.
+RewriteRule ^$ index.html [L]
+RewriteRule ^(shows|company|upcoming|meet-us|faq|contact)/?$ $1/index.html [L]
+RewriteRule ^shows/([^/]+)/?$ shows/$1/index.html [L]

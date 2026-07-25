@@ -1,0 +1,61 @@
+---
+const siteOrigin = 'https://quickandfunnymusicals.com';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  ogImage?: string;
+  ogImageType?: string;
+  bodyClass?: string;
+}
+
+const {
+  title,
+  description,
+  canonicalPath,
+  ogImage = `${siteOrigin}/images/messageicon.jpg`,
+  ogImageType = 'image/jpeg',
+  bodyClass = 'page-sub',
+} = Astro.props;
+
+const canonicalUrl = `${siteOrigin}${canonicalPath}`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content={ogImageType} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&family=Rock+Salt&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/main.css" />
+    <slot name="head" />
+  </head>
+  <body class={bodyClass}>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <slot name="before-main" />
+    <slot />
+    <slot name="after-main" />
+    <script defer src="/js/nav.js"></script>
+    <slot name="scripts" />
+  </body>
+</html>

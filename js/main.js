@@ -16,7 +16,7 @@
   const HERO_CONFIG = {
     lottiePath: 'logoanimation3.json',
     heroSettleDelay: 1000,
-    slideshowInterval: 5000,
+    slideshowInterval: 3300,
   };
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

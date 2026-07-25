@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { getShowBySlug, getShowSlugs } from '../../data/shows';
+import { getGalleryThumbSrc } from '../../lib/gallery';
+
+export function getStaticPaths() {
+  return getShowSlugs().map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const show = getShowBySlug(slug!);
+
+if (!show) {
+  return Astro.redirect('/shows');
+}
+
+const pageTitle = `${show.title} | Quick & Funny Musicals`;
+const pageDescription = `${show.title} - Quick & Funny Musicals.`;
+const siteOrigin = 'https://quickandfunnymusicals.com';
+const ogImage = `${siteOrigin}${show.logo}`;
+const ogImageType = show.logo.endsWith('.webp') ? 'image/webp' : 'image/jpeg';
+const bodyClass = `page-sub show-page show-page--diag-${show.diagonalVariant}`;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  canonicalPath={show.pageUrl}
+  ogImage={ogImage}
+  ogImageType={ogImageType}
+  bodyClass={bodyClass}
+>
+  <Nav slot="before-main" />
+  <SiteHeader slot="before-main" />
+
+  <main class="show-detail-page" id="main-content">
+    <section class="show-detail-intro" aria-labelledby="show-logo-heading">
+      <h1 class="visually-hidden" id="show-logo-heading">{show.title}</h1>
+      <img
+        id="show-logo"
+        class="show-detail__logo"
+        src={show.logo}
+        alt={`${show.title} logo`}
+        loading="eager"
+      />
+      <div class="show-description" id="show-description">
+        {
+          show.descriptionParagraphs.map((paragraph) => (
+            <p class="show-description__text">{paragraph}</p>
+          ))
+        }
+        {
+          show.learnMoreUrl && (
+            <a
+              class="btn btn--outline show-description__learn-more"
+              href={show.learnMoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Learn More
+            </a>
+          )
+        }
+      </div>
+    </section>
+
+    <section class="show-gallery" aria-labelledby="show-gallery-heading">
+      <div class="show-gallery__shape" aria-hidden="true"></div>
+      <div class="show-gallery__inner">
+        <h2 class="show-gallery__heading" id="show-gallery-heading">Production Gallery</h2>
+        <div class="show-gallery__grid" id="show-gallery-grid">
+          {
+            show.galleryImages.map((src, index) => (
+              <button
+                class="show-gallery__item"
+                type="button"
+                data-index={index}
+                aria-label={`Open ${show.title} image ${index + 1}`}
+              >
+                <img
+                  class="show-gallery__image"
+                  src={getGalleryThumbSrc(src)}
+                  alt={`${show.title} production image ${index + 1}`}
+                  loading={index < 3 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  {...index < 3 ? { fetchpriority: 'high' as const } : {}}
+                />
+              </button>
+            ))
+          }
+        </div>
+        <a href="/shows" class="btn btn--outline show-gallery__return">Return To All Shows</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="show-lightbox" id="show-lightbox" aria-hidden="true" slot="after-main">
+    <button class="show-lightbox__backdrop" type="button" data-lightbox-close aria-label="Close gallery"></button>
+    <article
+      class="show-lightbox__dialog"
+      id="show-lightbox-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="show-lightbox-title"
+      aria-describedby="show-lightbox-caption"
+      tabindex="-1"
+    >
+      <h2 class="visually-hidden" id="show-lightbox-title">{show.title} image gallery</h2>
+      <button class="show-lightbox__close" type="button" data-lightbox-close aria-label="Close gallery">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="show-lightbox__media">
+        <img alt="" id="show-lightbox-image" class="show-lightbox__image" />
+        <p class="show-lightbox__caption" id="show-lightbox-caption" aria-live="polite"></p>
+      </div>
+      <div class="show-lightbox__controls">
+        <button
+          class="show-lightbox__nav show-lightbox__nav--prev"
+          id="show-lightbox-prev"
+          type="button"
+          aria-label="Previous image">&#8249;</button
+        >
+        <button
+          class="show-lightbox__nav show-lightbox__nav--next"
+          id="show-lightbox-next"
+          type="button"
+          aria-label="Next image">&#8250;</button
+        >
+      </div>
+    </article>
+  </div>
+
+  <SiteFooter slot="after-main" />
+
+  <script is:inline slot="scripts" define:vars={{ galleryImages: show.galleryImages, showTitle: show.title }}>
+    window.QFShowLightboxData = {
+      galleryImages: galleryImages,
+      showTitle: showTitle,
+    };
+  </script>
+  <script slot="scripts" defer src="/js/show-lightbox.js"></script>
+  <script is:inline slot="scripts">
+    document.addEventListener('DOMContentLoaded', function () {
+      QFNav.initMenu();
+      QFNav.initSubpageHeader();
+    });
+  </script>
+</BaseLayout>
